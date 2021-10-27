@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Links -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/toggle.css">
+    <link rel="stylesheet" href="css/tab-bar.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script src="script.js"></script>
+    <!-- Bootstrap CSS CDN -->
+    <!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> --->
+    
+
+    <!-- FONT AWESOME CDN Links -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+    <title>Settings | Bitoshi</title>
+    <style>
+        /* #datepicker{
+            width:550px;
+        } */
+        form button{
+            text-decoration: none;
+        }
+        form button:hover{
+            text-decoration: none;
+            
+        }
+        section{
+            width:100%;
+            background: #fff;
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 15%);
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 15%);
+            border-top: 5px solid #fad48f;
+            /* box-shadow: 0px 4px 4px 0px #00000040;
+            box-shadow: 0px 4px 2px 0px #00000026 inset; */
+            border-radius: 5px;
+
+        }
+        section .inner{
+            margin:3px auto;
+        }
+        .bank-image{
+            flex-basis:40%;
+        }
+        .img-bank{
+            max-width:100%;
+        }
+        /* .modal-dialog .modal-dialog-centered .accountTab{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom:200px;
+        } */
+        .colored-toast.swal2-icon-success {
+            background-color: #a5dc86 !important;
+        }
+        .account{
+            /* display:flex;
+            justify-content: center;
+            align-items: center; */
+            position:relative;
+            width: 100%;
+            height: 400px;
+            overflow:hidden;
+        }
+        .position-absolute {
+            position: absolute !important;
+        }
+
+        .form-control small {
+            color: var(--error-color);
+            position: absolute;
+            top: 60px;
+            left: 0;
+            visibility: visible;
+        }
+
+        .form-group.error small {
+            visibility: visible;
+        }
+
+    </style>
+</head>
+<body>
+    <aside>
+        <div class="toggle">
+            <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+                  <span></span>
+                </a>
+          </div>
+          <div class="side-inner">
+            <div class="logo-wrap">
+                <div class="logo" onload="getAvatar()">
+                  <span class="text-center mx-3" id="avatarFirst">N</span>
+                </div>
+                <span class="logo-text" id="avatarText">Njoku</span>
+            </div>
+
+
+            <div class="nav-menu">
+              <ul>
+                <li class="my-3"><a href="./dashboard.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Dashboard1.svg" alt="dashboard_icon" class="img-aside"></span><span class="menu-text">Dashboard</span></a></li>
+                <li class="my-3"><a href="./transactions.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Transactions1.svg" alt="transaction_icon" class="img-aside"></span><span class="menu-text">Transactions</span></a></li>
+                <!-- <li class="my-3"><a href="./my-giftcards.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Giftcard.svg" alt="giftcard_icon" class="img-aside"></span><span class="menu-text">Giftcards</span></a></li> -->
+                <li class="active my-3"><a href="./settings.html" class="d-flex align-items-center"><span class="wrap-icon  mr-3"><img src="./assets/icons/Settings.svg" alt="settings_icon" class="img-aside"></span><span class="menu-text">Settings</span></a></li>
+                <li class="my-3"><a href="./index.html" class="d-flex align-items-center"><span class="wrap-icon logout mr-3"><img src="./assets/icons/logout.svg" alt="logout_icon" class="img-aside logout"></span><span class="menu-text font-20 failed">Logout</span></a></li>
+              </ul>
+            </div>
+            <div>
+                
+            </div>
+          </div> 
+    </aside>
+    <main>
+        <div class="container dashboard">
+            <div class="row header-menu">
+                <div class="col-2 mx-auto my-2">
+                    <h4 class="my-4">Settings</h4>
+                </div>
+            </div>
+
+
+            <div class="row mx-1">
+                <div class="col">
+                    <ul class="nav nav-pills" id="settingsTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-account-tab" data-toggle="pill" href="#pills-account" role="tab" aria-controls="account" aria-selected="false">Account Info</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-security-tab" data-toggle="pill" href="#pills-security" role="tab" aria-controls="security" aria-selected="false">Security</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-faq-tab" data-toggle="pill" href="#pills-faq" role="tab" aria-controls="faq" aria-selected="false">FAQs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-refer-tab" data-toggle="pill" href="#pills-refer" role="tab" aria-controls="referral" aria-selected="false">Refer A Friend</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content my-4" id="pillsTabcontent">
+                        <!-- Profile Tab -->
+                        <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <section>
+                                <div class="inner mx-2">
+                                    <h5 class="py-3"><b>Edit Profile</b></h5>
+                                    <div class="row my-3">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="firstname">First Name</label>
+                                                <input type="text" class="form-control modified" id="username"  placeholder="Enter first name" value="">
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="firstname">Last Name</label>
+                                                <input type="text" class="form-control" id="username" placeholder="Enter last name"  value="">   
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="phone number">Phone Number</label>
+                                                <input inputmode="numeric" type="text" class="form-control" placeholder="Enter phone number"/>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="date of birth">Date of Birth</label>
+                                                <input id="datepicker" class="form-control"/>
+                                            </div>
+                                        </div>    
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary my-5" class=".colored-toast.swal2-icon-success" id="updateProfile" style="background-color:#fad28f; border:none">Save Changes</button>
+                                </div>
+                            </section>
+                            <br>
+
+                            <!-- Reset Password -->
+                            <section>
+                                <div class="inner mx-2">
+                                    <h5 class="py-3"><b>Reset Password</b></h5>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="oldPassword">Old Password</label>
+                                                <input type="text" class="form-control" id="oldPassword" name="oldPassword"  placeholder="Enter Old Password" value="">   
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="newPassword">New Password</label>
+                                                <input type="text" class="form-control" id="newPassword" name="newPassword"  placeholder="Enter New Password" value="">   
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="confirmPassword">Confirm New Passwprd</label>
+                                                <input type="text" class="form-control" id="confirmPassword" name="confirmPassword"  placeholder="Confirm New Password" value="">   
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-success my-5" id="resetPassword" onclick="resetPwd()" style="border:none">Reset Password</button>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- Closing Reset Password -->
+
+                        
+                        <!-- Closing Profile Tab -->
+
+                        <!-- Account Tab -->
+                        <div class="tab-pane fade" id="pills-account" role="tabpanel" aria-labelledby="account-tab">
+                            <section>
+                                <div class="inner mx-2">
+                                    <h5 class="py-3"><b>Bank Account</b></h5>
+                                    
+                                    <div class="row my-4">
+                                        <div class="col-12 my-2">
+                                            <p class="text-left">Add/update your Bank account details for withdrawal purposes</p>
+                                            
+                                            <!-- Modal Query -->
+                                            <button type="button" class="btn btn-success btn-shadow"  
+                                            data-toggle="modal" data-target="#addAccount">
+                                                <span class="mx-2">
+                                                <img src="./assets/icons/Add.svg" class="img-plus" alt="">
+                                                </span>Add Bank Account 
+                                            </button>
+                                            
+
+                                            <!-- Add Account Modal -->
+                                            <form action="javascript:void(0)" class="form" id="search" onsubmit="createAccount()">
+                                                <div class="modal fade" id="addAccount" tabindex="-1" role="dialog" data-backdrop="false" aria-hidden="true">
+                                                    <div class="modal-dialog"  role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Add Account</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <h6 style="color:#c4c4c4" class="font-10">Note: Ensure bank details are written correctly </h6>
+                                                                        <div class="form-group">
+                                                                            <label for="accountNumber">Account Number</label>
+                                                                            <input type="text" inputmode="numeric" class="form-control" id="accountNum" name="accountNum"  placeholder="Enter Account Number" value="">   
+                                                                            <small>Error Message</small>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+    
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <div class="form-group">
+                                                                            <label for="first">Account Name</label>
+                                                                            <input type="text" class="form-control" id="accountName" name="accountName" placeholder="Enter Account Name" value="">   
+                                                                            <small>Error Message</small>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                    
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <div class="form-group">
+                                                                            <label for="phone number">Bank Name</label>
+                                                                            <select class="form-control" id="bankName">
+                                                                                <option selected disabled>Select Bank</option>
+                                                                                <option value="044">Access Bank</option>
+                                                                                <option value="063"> Access (Diamond) Bank</option>
+                                                                                <option value="citibank">Citibank Nigeria Limited</option>
+                                                                                <option value="050">Ecobank</option>
+                                                                                <option value="070">Fidelity Bank</option>
+                                                                                <option value="011">First Bank</option>
+                                                                                <option value="214">First City Monument Bank</option>
+                                                                                <option value="058">Guaranty Trust Bank </option>
+                                                                                <option value="030">Heritage Bank</option>
+                                                                                <option value="301">Jaiz Bank</option>
+                                                                                <option value="082">Keystone Bank</option>
+                                                                                <option value="kuda">Kuda Bank</option>
+                                                                                <option value="polaris">Polaris Bank</option>
+                                                                                <option value="providus">Providus Bank</option>
+                                                                                <option value="stanbic">Stanbic IBTC Bank</option>
+                                                                                <option value="standard">Standard Chartered Bank</option>
+                                                                                <option value="sterling">Sterling Bank</option>
+                                                                                <option value="076">Skye Bank</option>
+                                                                                <option value="032">Union Bank</option>
+                                                                                <option value="033">United Bank for Africa</option>
+                                                                                <option value="215">Unity Bank</option>
+                                                                                <option value="035">Wema Bank</option>
+                                                                                <option value="057">Zenith Bank</option>
+                                                                            </select>    
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                
+                                                                <button type="submit" class="btn btn-primary" id="button">
+                                                                   Add Account
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            
+                                            <!-- Closing Add Account Modal  -->
+
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="bank-details my-5 mb-3 d-flex justify-content align-items-left">
+                                        <div class="row bank-image">
+                                            <div class="col-3 col-sm-3">
+                                                <img src="./assets/icons/Bank.svg" alt="bank_img" class="img-bank mx-3">
+                                            </div>
+
+                                            <div class="col-9 col-sm-9 bank-text">
+                                                <small>0236237700 - <span> Guaranty Trust Bank </span></small>
+                                                <br>
+                                                <small>Olutoke Damola</small>
+                                            </div>
+                                        </div>
+                                    </div> -->    
+                                </div>
+
+                                <div class="inner">
+                                    <!-- Container for saved accounts -->
+                                    <div class="table-wrapper">
+                                        <table class="table">
+                                            <thead></thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+                        <!-- Closing Account Tab -->
+
+                        <!-- Security Tab -->
+                        <div class="tab-pane fade" id="pills-security" role="tabpanel" aria-labelledby="security-tab">
+                            <div>
+                                <div class="d-flex flex-row justify-content-between align-items-center grey-border round-corner px-4 py-3 mt-3">
+                                    <div>
+                                        <span class="d-block font-16 weight-400 purple-color-2">Hide Dashboard Balance</span>
+                                        <!-- <span class="d-block font-10 weight-400 purple-color-2">Disabled</span> -->
+                                    </div>
+                                    <div class="onoffwrapper">
+                                        <input type="checkbox" name="toggle1" id="toggle1" class="onoff" data-toggle="toggle" data-on="Enabled" data-off="Disabled">
+                                        <label for="toggle1"></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-row justify-content-between align-items-center grey-border round-corner px-4 py-3 mt-3">
+                                <div>
+                                    <span class="d-block font-16 weight-400 purple-color-2">Enable Dark Mode</span>
+                                    <!-- <span class="d-block font-10 weight-400 purple-color-2" id="textChange">Disabled</span> -->
+                                </div>
+                                <div class="mt-2 px-2" >
+                                    <input type="checkbox" class="checkbox" id="chk" />
+                                    <label class="label" for="chk">
+                                        <div class="ball"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Closing Security Tab -->
+
+                        <!-- FAQs Tab -->
+                        <div class="tab-pane fade" id="pills-faq" role="tabpanel" aria-labelledby="faq-tab">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <h5>Frequently Asked Questions</h5>
+                            </div>
+
+                            <div class="row">
+            <div class="col">
+                <h3>
+                    <b> ⚡ Crypto Payment</b>
+                </h3>
+                <h6>
+                    How do i pay crypto for my exchange?
+                </h6>
+                <ol class="font-14 ash-color">
+                    <li>Click on sell crypto and you will be presented with your unique crypto (btc, eth, usdt) address alongside the current exchange rate. Scan or copy this address 
+                        to your external wallet (e.g. Blockchain wallet, Coinbase etc. ).</li>
+                    <li>
+                        Send your crypto payment from your external wallet to the address from the previous step.
+                    </li>
+                    <li>
+                        You guessed it! . Your transaction has now start processing. 
+                    </li>
+                    <li>The address doesn't change and it is matched with your bank details, so you can reuse the address anytime.</li>
+                </ol>
+                
+
+                <H6>I have paid, now what next?</H6>
+                <p class="font-14 ash-color">
+                    Now that you have made your crypto payment. 
+                    The transaction should now start processing. Funds will be sent after we receive 1 block confirmation of your bitcoin payment.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h3>
+                    <b>⚡ Funds</b>
+                </h3>
+                <h6>
+                    When will i receive my funds?
+                </h6>
+                <p class="font-14 ash-color">Funds will be delivered usually minutes after you make payment.</p>
+                <h6>
+                    Who are vendors?
+                </h6>
+                <p class="font-14 ash-color">They are verified individuals that make funds transfers on Bitoshi. Risk free!</p>
+
+                <h6>Do you use crypto related words as references?</h6>
+                <p>
+                    Our vendors will not reference any crypto related word while making your fund transfer. 
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h3>
+                    <b>⚡ Disputes</b>
+                </h3>
+                <h6>
+                    Why is my payment taking so long to confirm?
+                </h6>
+                <p class="font-14 ash-color">Cryptocurrencies like bitcoin may take a few to several minutes to confirm. Make sure to send bitcoin with high priority for a faster confirmation time.</p>
+                
+                <h6>I have not received funds. What should I do?</h6>
+                <p class="font-14 ash-color">Bank transfers are usually processed within minutes. Although it might take longer to reach your account due to banking network delay. We have no control over
+                     this as the transfer has been sent. Contact support if its taking longer than 24 hours.
+                </p>
+
+                <h6>How do I contact support?</h6>
+                <p class="font-14 ash-color">Chat with a customer support by tapping on the chat button on the bottom right corner of your screen.</p>
+            </div>
+        </div>
+                        </div>
+                        <!-- Closing FAQs Tab -->
+
+                        <!-- Referral Tab -->
+                        <div class="tab-pane fade" id="pills-refer" role="tabpanel" aria-labelledby="faq-refer">
+                            <section>
+                                <div class="inner mx-3">
+                                    <h5 class="py-3"><b>Refer A Friend</b></h5>
+                                </div>
+
+                                <div class="mx-3">
+                                    <p>
+                                        Share your referral link to new friends who sign up on Bitoshi and earn bonuses.
+                                    </p>
+                                    <div>
+                                        <button type="submit" class="btn btn-success my-5" id="referral" onclick="generateLink()" style="border:none">Generate Link</button>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-nav-container">
+            <div class="tab purple">
+                <!-- <i class="fa fa-th-large" aria-hidden="true"></i> -->
+                <i class="fas fa-wallet"></i>
+                <p>Dashboard</p>
+            </div>
+    
+            <div class="tab pink">
+                <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+                <i class="far fa-comments@2x"></i>
+                <p>Transactions</p>
+            </div>
+    
+            <div class="tab yellow">
+                <i class="fas fa-credit-card">
+                </i>
+                <p>GiftCards</p>
+            </div>
+    
+            <div class="tab active teal">
+                <i class="fa fa-cog">
+                </i>
+                <p>Settings</p>
+            </div>
+        </div>
+    </main>
+    
+    <script src="tab-bar.js"></script>
+
+
+    
+    <!-- jQuery CDN -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.slim.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    
+
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    
+    
+    <!-- Popper -Js -->
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="src/main.js"></script> -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="sweetalert2.all.min.js"></script> -->
+    <!-- Side Navigation -->
+    <script>
+        $(function() {
+            'use strict';
+
+            $('.js-menu-toggle').click(function(e) {
+
+                var $this = $(this);
+                if ( $('body').hasClass('show-sidebar') ) {
+                    $('body').removeClass('show-sidebar');
+                    $this.removeClass('active');
+                } else {
+                    $('body').addClass('show-sidebar');	
+                    $this.addClass('active');
+                }
+                e.preventDefault();
+
+            });
+
+            // click outisde offcanvas
+            $(document).mouseup(function(e) {
+            var container = $(".sidebar");
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                if ( $('body').hasClass('show-sidebar') ) {
+                        $('body').removeClass('show-sidebar');
+                        $('body').find('.js-menu-toggle').removeClass('active');
+                    }
+            }
+            });
+        });
+    </script>
+    
+    <script>
+            $('#settingsTab a').on('click', function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            })
+    </script>
+    
+    <script>
+      // Close Chat ModalOption
+        $('#hideModalButton').click(function(){
+            $("#chatpage").modal("hide");
+        });
+    </script>
+
+    <!-- Modal Stacked on bottom left -->
+    <!-- <script>
+      $('#chatpage').on('show.bs.modal', function () {
+        $('#chatpage').css("margin-top", 
+        $(window).height() / 2 - $('.modal-content').height() / 2);
+      });
+    </script> -->
+
+
+    <!-- Dark/Light Mode Toggle -->
+    <script>
+        const chk = document.getElementById('chk');
+        
+        chk.addEventListener('change', () => {
+            document.body.classList.toggle('dark');
+        });
+    </script> 
+    
+    <!-- Date Selector -->
+    <script>
+        $('#datepicker').datepicker({ 
+            format: 'dd mmm yyyy' ,
+            keyboardNavigation: true,
+            modal: true, 
+            header: true, 
+            footer: true ,
+            value: '02 Sep 1970',
+        });
+     </script>
+    
+    <script>
+        var toastMixin = Swal.mixin({
+            toast:true,
+            icon:'success',
+            width:250,
+            height: 100,
+            iconColor: 'white',
+            customClass: {
+                popup: 'colored-toast'
+            },
+            title:"General Title",
+            animation: true,
+            position: "top-right",
+            showConfirmButton: true, 
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        var profileBtn = document.getElementById("updateProfile");
+        profileBtn.addEventListener('click', function (){
+            toastMixin.fire({
+                toast:true, 
+                icon: 'success',
+                title: 'Changes Saved',
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+        })
+    </script>
+</body>
+</html>

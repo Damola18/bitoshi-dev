@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Links -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/toggle.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/tab-bar.css">
+    
+    <!-- Bootstrap CSS CDN -->
+    <!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> --->
+    
+
+    <!-- FONT AWESOME CDN Links -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+    <title>Settings | Bitoshi</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 d-flex flex-row flex-md-column align-items-left">
+                <div class="wrapper">
+                    <nav id="sidebar">
+                        <div class="sidebar-header">
+                            <img src="assets/images/Bitoshi-logo.png" alt="">
+                        </div>
+            
+                        <ul class="list-unstyled components px-2 py-3 font-12">
+                            <li>
+                                <a href="dashboard.html" aria-expanded="false">
+                                    <!-- <i class="glyphicon glyphicon-th-large"></i> -->
+                                    <i class="fa fa-th-large" aria-hidden="true"></i>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <a href="transactions.html">
+                                    <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                    My Transactions
+                                </a>
+                            </li>
+                            <li>
+                                <a href="transactions.html" data-toggle="collapse" aria-expanded="false">
+                                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                    Assets
+                                </a>
+                                <ul class="collapse list-unstyled">
+                                    <li><a href="#">Crypto Assets</a></li>
+                                    <li><a href="#">Gift Cards</a></li>
+                                </ul>
+                            </li>
+                            <li class="active">
+                                <a href="settings.html">
+                                    <i class="fa fa-cog" aria-hidden="true"></i>
+                                    Settings
+                                </a>
+                            </li>
+
+                            <li >
+                                <a href="support.html">
+                                    <i class="fa fa-rocket" aria-hidden="true"></i>
+                                    Support
+                                </a>
+                            </li>
+                                
+                            <li>
+                                <a href="register.html">
+                                    <i class="fa fa-power-off" aria-hidden="true"></i>
+                                    </i>
+                                    Log Out
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    
+                    <!-- Page Content Holder -->
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Menu -->
+
+    <div class="tab-nav-container">
+        <div class="tab active purple">
+            <!-- <i class="fa fa-th-large" aria-hidden="true"></i> -->
+            <i class="fas fa-wallet"></i>
+            <p>Dashboard</p>
+        </div>
+
+        <div class="tab pink">
+            <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+            <i class="far fa-comments@2x"></i>
+            <p>Transactions</p>
+        </div>
+
+        <div class="tab yellow">
+            <i class="fas fa-credit-card">
+            </i>
+            <p>GiftCards</p>
+        </div>
+
+        <div class="tab  teal">
+            <i class="fa fa-cog">
+            </i>
+            <p>Settings</p>
+        </div>
+    </div>
+    <script src="tab-bar.js"></script>
+
+
+    
+    <!-- jQuery CDN -->
+    <script src="node_modules/jquery/dist/jquery.slim.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+    <!-- Bootstrap Js CDN -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    
+    <script>
+        const chk = document.getElementById('chk');
+        
+        chk.addEventListener('change', () => {
+            document.body.classList.toggle('dark');
+        });
+    </script> 
+    <!-- <script>
+        $(document).ready(function($){
+            $('.toggle2').click(function(){
+               $(".toggle2").toggleClass("active"); 
+               $("body").toggleClass("dark");
+               $.cookie("toggle2", $(".toggle2").hasClass('active'));
+            });
+
+            if($.cookie("toggle2") == true) {
+                $("toggle2").addClass("active");
+                $(".body").hasClass("dark");
+            }
+        })
+    </script> -->
+</body>
+</html>

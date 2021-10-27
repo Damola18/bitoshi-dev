@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Links -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    
+    <!-- FONT AWESOME CDN Links -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+    <title>My Dashboard | Bitoshi</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-white shadow sticky-top">
+        <div class="container">
+            <a href="" class="navbar-brand">
+                <img src="./assets/images/Bitoshi-logo.png" alt="bitoshi_logo">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="navbar" aria-expanded="false" data-toggle="collapse">
+                <span class="toggler-icon">
+                  <img src="assets/icons/hamburger.svg" alt="hamburger_icon">
+                </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item py-2"><a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item py-2"><a class="nav-link active" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item py-2"><a class="nav-link" href="./login.html">Login</a></li>
+                    <li class="nav-item "><a class="nav-link" href="./register.html" id="signup"> 
+                        <input type="submit" class="btn  btn-block" value="Sign up">
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="user-header">
+            <span><i class="fas fa-user"></i></span><h5>Welcome, Smith</h5> 
+        </div>
+        <p class="initial-dpt" id="dep">Total Amount Received: $0.00</p>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="cnt-header">
+                    <div class="no-trx">
+                        <img src="./assets/images/img(rsx).png" alt="no-transactions">
+                        <h6 class="no-trx-text">You don't have any transactions yet?</h6>
+                        <div class="create-trx-btn"><a href="./dashboard.html" rel="noopener noreferrer"><img src="./assets/images/create-trx button2x.png" alt=""></a></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-none d-lg-block col-sm">
+                <div class="cnt-header d-flex justify-content-center align-items-center">
+                    <p style="color:rgba(223, 226, 225, 0.719)">Real time price listing goes here</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="footer-menu">
+        <footer class="container ml-5">
+            <div class="row text-left">
+                <div class="col-6 col-md">
+                    <h5>About Us</h5>
+                    <ul class="list-unstyled my-4">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <!--                 
+                <div class="col-6 col-md">
+                    <h5>Products</h5>
+                    <ul class="list-unstyled my-4">
+                        <li><a href="#">Gift Cards</a></li>
+                        <li><a href="#">Payment</a></li>
+                    </ul>
+                </div> -->
+
+                <div class="col-6 col-md">
+                    <h5>Support</h5>
+                    <ul class="list-unstyled my-4">
+                        <li><a href="#">Message Us On Whatsapp</a></li>
+                        <!-- <li><a href="#">Submit a review</a></li>
+                        <li><a href="#">Customer Service Center</a></li> -->
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md">
+                    <h5>Community</h5>
+                    <ul class="list-unstyled my-4">
+                        <li><a href="">Chat With Us on</a></li>
+                        <div class="social-links my-2">
+                            <span class="social-link-item">
+                                <img src="assets/icons/Vector.svg" alt="">
+                            </span>
+                            <span class="social-link-item mx-2">
+                                <img src="assets/icons/Vector-1.svg" alt="">
+                            </span>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="col-12 py-5 copyright-text">
+                    <span>Bitoshi &copy; 2021</span>
+                </div>
+
+            </div>
+        </footer>
+    </section>
+
+</body>
+</html>

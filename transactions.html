@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Links -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/toggle.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/tab-bar.css">
+    
+
+    
+    <!-- FONT AWESOME CDN Links -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+    <title>My Transactions | Bitoshi</title>
+
+    <style>
+        
+        .colored-toast.swal2-icon-success {
+            background-color: #a5dc86 !important;
+        }
+    </style>
+</head>
+<body>
+    <aside >
+        <div class="toggle">
+            <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+                  <span></span>
+                </a>
+          </div>
+          <div class="side-inner">
+            <div class="logo-wrap">
+                <div class="logo" onload="getAvatar()">
+                  <span class="text-center mx-3" id="avatarFirst">N</span>
+                </div>
+                <span class="logo-text" id="avatarText">Njoku</span>
+            </div>
+              
+            <!-- <div class="search-form">
+              <form action="#">
+                <span class="wrap-icon">
+                  <i class="fas fa-search light"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Search...">
+              </form>
+            </div> -->
+            <div class="nav-menu">
+                <ul>
+                    <li class="my-3"><a href="./dashboard.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Dashboard1.svg" alt="dashboard_icon" class="img-aside"></span><span class="menu-text">Dashboard</span></a></li>
+                    <li class="my-3"><a href="./transactions.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Transactions1.svg" alt="transaction_icon" class="img-aside"></span><span class="menu-text">Transactions</span></a></li>
+                    <li class="active my-3"><a href="./settings.html" class="d-flex align-items-center"><span class="wrap-icon  mr-3"><img src="./assets/icons/Settings.svg" alt="settings_icon" class="img-aside"></span><span class="menu-text">Settings</span></a></li>
+                    <li class="my-5"><a href="./login
+                        .html" class="d-flex align-items-center"><span class="wrap-icon logout mr-3"><img src="./assets/icons/logout.svg" alt="logout_icon" class="img-aside logout"></span><span class="menu-text font-20 failed">Logout</span></a></li>
+                  </ul>
+            </div>
+
+            <div>
+                
+            </div>
+          </div> 
+    </aside>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md">
+                    <div class="container dashboard">
+                        <div class="row header-menu">
+                            <div class="col-2 mx-5">
+                                <h4 class="my-4"></h4>
+                            </div>
+                        </div>
+                    </div>
+    
+                   
+                    <section class="all-transactions">
+                        <article class="multipages">
+                            <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                  <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" 
+                                  aria-controls="pills-home" aria-selected="true"><span><img src="./assets/icons/Layer 2.svg" alt="" class="img-aside mr-2 mb-1"></span> Bitcoin</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" 
+                                  aria-controls="pills-profile" aria-selected="false"><span><img src="./assets/icons/ethereum.svg" alt="" class="img-aside mr-2 mb-1"></span>Ethereum</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" 
+                                  aria-controls="pills-contact" aria-selected="false"><span><img src="./assets/icons/Layer 3.svg" alt="" class="img-aside mr-2 mb-1"></span>USDT</a>
+                                </li>
+                            </ul>
+                            
+                            <div class="tab-content transaction-wrap" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                    <div class="text-center">
+                                        <p>Receiving Address</p>
+                                        <div class="copyText" id="walletAddress1">
+                                            3ByGgw9QiWHohNckR23mGTWjbmk3XKmES9
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 ml-3 mt-2 text-right">
+                                        <button type="button" onclick="copyToClipboard1('walletAddress1')" class="btn btn-dark mr-4" class=".colored-toast.swal2-icon-success" id="copyWallet">Copy Address</button>
+                                        
+                                        <!-- Modal Query -->
+                                        <button type="button" onclick="getBtcQr()" class="btn" 
+                                            data-toggle="modal" data-target="#btcAddressModal">
+                                            <img src="./assets/icons/unique wallet.svg" alt="" class="img-plus mr-3" href="">
+                                        </button>
+                                        
+                                        <div class="text-center mt-4">
+                                            <p>You can always send Bitcoin to this address and get paid directly to your provided bank details.</p>
+                                            <p class="text-danger">Ensure you use a high (priority) sending fee when sending from a reputable platform for fast confirmation.</p>
+                                            <p>Payment will be processed after we receive 1 block confirmation of your payment</p>
+                                            <button class="btn btn-danger mb-3" type="button">
+                                                Confirm Transaction
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" id="btcAddressModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">BTC Address</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <!-- Div for Generating QR Code - BTC -->
+                                              <div id="btcQr" class="d-flex justify-content-center align-items-center"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                    <div class="text-center">
+                                        <p>Receiving Address</p>
+                                        <div class="copyText"  id="walletAddress2">
+                                            0x580d2436c07a8d8a7b67ad59da9a942a50bc235e
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 ml-3 mt-2 text-right">
+                                        <button type="button" onclick="copyToClipboard2('walletAddress2')" class="btn btn-dark mr-4" class=".colored-toast.swal2-icon-success" id="copyWallet">Copy Address</button>
+                                        <button type="button" onclick="getEthQr()"class="btn" 
+                                            data-toggle="modal" data-target="#ethAddressModal">
+                                            <img src="./assets/icons/unique wallet.svg" alt="" class="img-plus mr-3" href="">
+                                        </button>
+                                        
+                                        <div class="text-center mt-4">
+                                            <p>You can always send Ethereum to this address and get paid directly to your provided bank details.</p>
+                                            <p class="text-danger">Ensure you use a high (priority) sending fee when sending from a reputable platform for fast confirmation.</p>
+                                            <p>Payment will be processed after we receive 1 block confirmation of your payment</p>
+                                            <button class="btn btn-danger mb-3" type="button">
+                                                Confirm Transaction
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Div for Generating QR Code - ETH -->
+                                    <div id="QrAddress"></div>
+
+                                    <div class="modal fade" id="ethAddressModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">ETH Address</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <!-- Div for Generating QR Code - ETH -->
+                                              <div id="ethQr" class="d-flex justify-content-center align-items-center"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                    <div class="text-center">
+                                        <p>Receiving Address</p>
+                                        <div class="copyText" id="walletAddress3">
+                                            TTbYz3pucFBQA1tYhV8DMvqt5yr7MwMrwR
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 ml-3 mt-2 text-right">
+                                        <button type="button" onclick="copyToClipboard3('walletAddress3')" class="btn btn-dark mr-4" class=".colored-toast.swal2-icon-success" id="copyWallet">Copy Address</button>
+                                        <button type="button" onclick="getUsdtQr()" class="btn" 
+                                            data-toggle="modal" data-target="#usdtAddressModal" id="usdtAddress">
+                                            <img src="./assets/icons/unique wallet.svg" alt="" class="img-plus mr-3" href="">
+                                        </button>
+                                        
+                                        <div class="text-center mt-4">
+                                            <p>You can always send Tether to this address and get paid directly to your provided bank details.</p>
+                                            <p class="text-danger">Ensure you use a high (priority) sending fee when sending from a reputable platform for fast confirmation.</p>
+                                            <p>Payment will be processed after we receive 1 block confirmation of your payment</p>
+                                            <button class="btn btn-danger mb-3" type="button">
+                                                Confirm Transactions
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                   
+
+                                    <div class="modal fade" id="usdtAddressModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">USDT Address</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                               <!-- Div for Generating QR Code - USDT -->
+                                               <div id="usdtQr" class="d-flex justify-content-center align-items-center"></div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>
+
+                           
+                        </article>
+                    </section>
+
+                    <!-- Tabs for transactions -->
+                    <div class="row m-5">
+                            <div class="col-sm">
+                                <p class="text-center weight-600 font-16">Recent Transactions</p>
+                                <ul class="nav nav-tabs nav-justified">
+                                    <li class="nav-item">
+                                        <a href="#all" class="nav-link active" role="tab" data-toggle="tab">ALL</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#btc" class="nav-link" role="tab" data-toggle="tab">BTC</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#eth" class="nav-link" role="tab" data-toggle="tab">ETH</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#usdt" class="nav-link" role="tab" data-toggle="tab">USDT</a>
+                                    </li>
+                                </ul>
+
+                                <br>
+
+                                <div class="tab-content">
+                                    <!-- Tab for all transactions -->
+                                    <div role="tabpanel" class="tab-pane fade" id="all">
+                                        <div class="transactions-list">
+                                            
+                                            <div class="list-header" >
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234 <span> BTC </span></h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="success"><b>Completed</b></p>
+                                                            <h6>Wed, 16th June, 2021</h6>
+                                                        </div>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="list-header">
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>BTC</span></h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="right-bar">
+                                                    <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="success"><b>Completed</b></p>
+                                                            <h6>Wed, 2nd June, 2021</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                        
+                        
+                                            <div class="list-header">
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>ETH</span></h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="right-bar">
+                                                    <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="success"><b>Completed</b></p>
+                                                            <h6>Wed, 2nd June, 2021</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="list-header">
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>ETH</span> </h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="right-bar">
+                                                    <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="failed"><b>Failed</b></p>
+                                                            <h6>Wed, 16th May, 2021</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <br>
+
+                                            <p class="text-center"></p>
+                                        </div> <!-- End of all transactions -->
+                                    </div> <!-- End of all transactions -->
+                                    
+                                    <!-- Tab for btc transactions -->
+                                    <div role="tabpanel" class="tab-pane fade show active" id="btc">
+                                        <div class="transactions-list">
+                                            <div class="list-header">
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>BTC</span></h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="success"><b>Completed</b></p>
+                                                            <h6>Wed, 16th June, 2021</h6>
+                                                        </div>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="list-header">
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>BTC</span></h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="right-bar">
+                                                    <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="success"><b>Completed</b></p>
+                                                            <h6>Wed, 2nd June, 2021</h6>
+                                                        </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="list-header">
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>BTC</span> </h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="right-bar">
+                                                    <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="failed"><b>Failed</b></p>
+                                                            <h6>Wed, 16th May, 2021</h6>
+                                                        </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <p class="text-center"></p>
+                                        </div>
+                                    </div> <!-- End of btc transactions -->
+                                    
+                                    <!-- Tab for eth transactions -->
+                                    <div role="tabpanel" class="tab-pane fade" id="eth">
+                                        <div class="transactions-list">
+                                            <div class="list-header">
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>ETH<span></h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="success"><b>Completed</b></p>
+                                                            <h6>Wed, 16th June, 2021</h6>
+                                                        </div>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="list-header">
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>ETH</span></h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="right-bar">
+                                                    <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="success"><b>Completed</b></p>
+                                                            <h6>Wed, 2nd June, 2021</h6>
+                                                        </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="list-header">
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>ETH</span> </h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="right-bar">
+                                                    <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="failed"><b>Failed</b></p>
+                                                            <h6>Wed, 16th May, 2021</h6>
+                                                        </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <p class="text-center"></p>
+                                        </div> 
+                                    </div> <!-- End of eth transactions -->
+                                
+                                    <!-- Tab for usdt transactions -->
+                                    <div role="tabpanel" class="tab-pane fade" id="usdt">
+                                        <div class="transactions-list">
+                                            <div class="list-header">
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>USDT</span></h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="success"><b>Completed</b></p>
+                                                            <h6>Wed, 16th June, 2021</h6>
+                                                        </div>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="list-header">
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>USDT</span></h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="right-bar">
+                                                    <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="success"><b>Completed</b></p>
+                                                            <h6>Wed, 2nd June, 2021</h6>
+                                                        </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="list-header">
+                                                <div class="left-bar">
+                                                    <div  class="transaction-details">
+                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>USDT</span> </h6>
+                                                        <p class="priceUsd"> $4.59 <span class="priceNgn">- <span>NGN</span>1,791.01 </span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="right-bar">
+                                                    <div class="right-bar">
+                                                        <div class="transaction-state">
+                                                            <p class="failed"><b>Failed</b></p>
+                                                            <h6>Wed, 16th May, 2021</h6>
+                                                        </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <p class="text-center"></p>
+                                        </div>
+                                    </div> <!-- End of usdt transactions-->
+                                    
+                                </div>  <!-- End of tab content -->
+                                    
+                            </div> <!-- End of col-sm-8 -->
+                                    
+                    </div> <!-- End of row -->
+
+                    <!-- Tab Menu -->
+                    <div class="tab-nav-container">
+                        <div class="tab purple">
+                            <!-- <i class="fa fa-th-large" aria-hidden="true"></i> -->
+                            <li><a href=""></a>
+                                <i class="fas fa-wallet"></i>
+                                <p>Dashboard</p>
+                            </li>
+                        </div>
+
+                        <div class="tab pink">
+                            <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+                            <i class="far fa-comments@2x"></i>
+                            <p>Transactions</p>
+                        </div>
+
+                        <div class="tab active yellow">
+                            <i class="fas fa-credit-card">
+                            </i>
+                            <p>GiftCards</p>
+                        </div>
+
+                        <div class="tab teal">
+                            <i class="fa fa-cog">
+                            </i>
+                            <p>Settings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+    <script src="tab-bar.js"></script>
+
+    <!-- jQuery CDN -->
+    <script src="node_modules/jquery/dist/jquery.slim.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+    <!-- Bootstrap Js CDN -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    
+    <!-- Side Navigation -->
+
+    
+
+    <script>
+        $(function() {
+            'use strict';
+
+            $('.js-menu-toggle').click(function(e) {
+
+                var $this = $(this);
+
+                
+
+                if ( $('body').hasClass('show-sidebar') ) {
+                    $('body').removeClass('show-sidebar');
+                    $this.removeClass('active');
+                } else {
+                    $('body').addClass('show-sidebar');	
+                    $this.addClass('active');
+                }
+
+                e.preventDefault();
+
+            });
+
+            // click outisde offcanvas
+            $(document).mouseup(function(e) {
+            var container = $(".sidebar");
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                if ( $('body').hasClass('show-sidebar') ) {
+                        $('body').removeClass('show-sidebar');
+                        $('body').find('.js-menu-toggle').removeClass('active');
+                    }
+            }
+            }); 
+
+            
+
+            });
+    </script>
+    <script>
+        function copyToClipboard1(containerid) {
+            if (document.selection) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(document.getElementById(containerid));
+                range.select().createTextRange();
+                document.execCommand("copy");
+            } else if (window.getSelection) {
+                var range = document.createRange();
+                range.selectNode(document.getElementById(containerid));
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+            }
+        }
+
+        function copyToClipboard2(containerid) {
+            if (document.selection) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(document.getElementById(containerid));
+                range.select().createTextRange();
+                document.execCommand("copy");
+            } else if (window.getSelection) {
+                var range = document.createRange();
+                range.selectNode(document.getElementById(containerid));
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+            }
+        }
+
+        function copyToClipboard3(containerid) {
+            if (document.selection) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(document.getElementById(containerid));
+                range.select().createTextRange();
+                document.execCommand("copy");
+            } else if (window.getSelection) {
+                var range = document.createRange();
+                range.selectNode(document.getElementById(containerid));
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+            }
+        }
+    </script>
+    <script>
+        function getBtcQr(){
+            $('#btcQr').qrcode({
+                render:'table',
+                type:"text",
+                text:"3ByGgw9QiWHohNckR23mGTWjbmk3XKmES9",
+                width:200,
+                height:200,
+                typeNumber:-1
+            })
+        }
+
+        function getEthQr(){
+            $('#ethQr').qrcode({
+                render:'table',
+                type:"text",
+                text:"0x580d2436c07a8d8a7b67ad59da9a942a50bc235e",
+                width:200,
+                height:200,
+                typeNumber:-1
+            })
+        }
+
+        function getUsdtQr(){
+            $('#usdtQr').qrcode({
+                render:'table',
+                type:"text",
+                text:"TTbYz3pucFBQA1tYhV8DMvqt5yr7MwMrwR",
+                width:200,
+                height:200,
+                typeNumber:-1
+            })
+        }
+    </script>
+    <script>
+        var toastMixin = Swal.mixin({
+            toast:true,
+            icon:'success',
+            width:350,
+            height: 100,
+            iconColor: 'white',
+            customClass: {
+                popup: 'colored-toast'
+            },
+            title:"General Title",
+            animation: true,
+            position: "top-right",
+            showConfirmButton: true, 
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        var copyAddressBtn = document.getElementById("copyWallet");
+        copyAddressBtn.addEventListener('click', function (){
+            toastMixin.fire({
+                toast:true, 
+                icon: 'success',
+                title: 'Wallet Address Copied',
+                position: 'top-center',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+        })
+    </script>
+</body>
+</html>

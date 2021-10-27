@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Create Profile Image of First Letter of First & Last Name</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        #frm-generate-image label.error {
+            color: red;
+        }
+
+        #profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #337ab7;
+            font-size: 35px;
+            color: #fff;
+            text-align: center;
+            line-height: 150px;
+            margin: 0 auto;
+        }
+
+        .hideme {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>Create Profile Image of First Letter of First & Last Name</h3>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Create Profile Image of First Letter of First & Last Name</div>
+            <div class="panel-body">
+                <form class="form-horizontal" action="javascript:void(0)" id="frm-generate-image">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="fname">First Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" required class="form-control" id="fname" name="fname" placeholder="Enter first name...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="lname">Last Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" required class="form-control" id="lname" name="lname" placeholder="Enter last name...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="profile-image" class="hideme"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+
+    <!-- <script>
+        $(function () {
+            $("#frm-generate-image").validate({
+                submitHandler: function() {
+                    var initials = $('#fname').val().charAt(0) + $('#lname').val().charAt(0);
+                    var firstname =  $('#fname').val()
+                    $('#profile-image').removeClass('hideme').text(initials);
+                }
+            });
+        });
+    </script> -->
+    <script>
+        $(function getAvatar(){
+            $("#frm-generate-image").validate({
+                submitHandler: function getAvatar() {
+                    var initials = $('#fname').val().charAt(0) + $('#lname').val().charAt(0);
+                    // var firstname =  $('#fname').val()
+                    // alert(firstname())
+                    $('#profile-image').removeClass('hideme').text(initials);
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <form>
+        <label for="">Label</label>
+        <input name="yourName"/>
+        
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            function getInitials(valStr) {
+                var words = valStr.split(" "),
+                    initials = "";
+                words.forEach(function(word) {
+                    initials += word.charAt(0);
+                });
+                return initials.toUpperCase();
+            }
+            $("input[name=yourName]").mouseout(function() {
+            var val = $(this).val();
+            // alert(val);
+            alert(getInitials(val));
+            })
+        })
+    </script>   
+</body>
+</html> -->

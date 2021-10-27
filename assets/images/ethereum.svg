@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="overview" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-280.000000, -944.000000)">
+        <g id="Wallet" transform="translate(250.000000, 740.000000)">
+            <g id="eth" transform="translate(30.000000, 204.000000)">
+                <g id="btc">
+                    <g id="total">
+                        <g id="Group-2">
+                            <circle id="Oval-2" fill="#7870B4" cx="10" cy="10" r="10"></circle>
+                            <g id="Ethereum_logo_2014-Copy" transform="translate(7.000000, 4.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                <path d="M3,11.5939972 L3,11.7142857 L0,7 L3,8.97648625 L3,9.02668272 L3.03645468,8.97648625 L6,7 L3.03645468,11.7142857 L3,11.5939972 Z M3,7.78101568 L3,7.85714286 L0,5.79328506 L3,0 L3,0.259214389 L3.06412659,0 L6,5.79330517 L3.06412659,7.85714286 L3,7.78101568 Z" id="Combined-Shape"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

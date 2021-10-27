@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <!-- CSS Links -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/custom.css">
+        
+        <!-- FONT AWESOME CDN Links -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+        <title>Bitoshi</title>
+        
+    </head>
+<body>
+    <nav class="navbar navbar-expand-md bg-white shadow sticky-top">
+        <div class="container">
+            <a href="" class="navbar-brand">
+                <img src="./assets/images/Bitoshi-logo.png" alt="bitoshi_logo">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="navbar" aria-expanded="false" data-toggle="collapse">
+                <span class="toggler-icon">
+                  <img src="assets/icons/hamburger.svg" alt="hamburger_icon">
+                </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item py-2"><a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item py-2"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item py-2"><a class="nav-link" href="./login.html">Login</a></li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./register.html" id="signup"> 
+                            <input type="submit" class="btn  btn-block" value="Sign up">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="jumbotron jumbotron-rates">
+        <div class="img lazy-loading"></div>
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                    <h1 class="font-20" style="color:#000">Rates</h1>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="rate-pg">
+            <h1 class="text-center">Digital Currency Converter</h1>
+        </div>
+        <div class="form-group">
+            <label for="Base Currency" class="mx-3">Base Currency:
+            </label>
+            <select name="" id="base" class="form-control mx-1">
+                <option value="">USD</option>
+                <option value="">NGN</option>
+            </select>
+            <input type="number" name="" id="baseNumber" class="form-control" min="0">
+            <span><img src="./assets/icons/Curl.svg" alt="" class="img-aside d-flex justify-content-center align-items-center"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="Target Currency" class="mx-3">Target Currency:
+            </label>
+            <select name="" id="target" class="form-control mx-1">
+                <option value="">BTC</option>
+                <option value="">ETH</option>
+                <option value="">USDT</option>
+            </select>
+            <input type="number" name="" id="targetNumber" class="form-control"  min="0">
+        </div>
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

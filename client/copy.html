@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy</title>
+
+      <!-- FONT AWESOME CDN Links -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="myInput">
+        <button onclick="copyText()"><i class="far fa-copy"></i></button>
+        <div id="notification" class="tooltip">
+            <p>Text Copied</p>
+        </div>
+        <script src="copy.js">
+            function copyText(){
+    var copyText = document.getElementById("myInput");
+    copyText.select();
+    document.execCommand("copy");
+    document.getElementById("notification").style.opacity = "1";
+    setTimeout(() => {
+        document.getElementById("notification").style.opacity = "0";
+    }, 1000);
+}
+        </script>
+    </div>
+</body>
+</html>

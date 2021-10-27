@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Links -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/toggle.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/tab-bar.css">
+    
+
+    <!-- FONT AWESOME CDN Links -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+    <title>My Dashboard | Bitoshi</title>
+</head>
+<body>
+    <aside>
+        <div class="toggle">
+            <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+                  <span></span>
+                </a>
+          </div>
+          <div class="side-inner">
+            <div class="logo-wrap">
+                <div class="logo" onload="getAvatar()">
+                  <span class="text-center mx-3" id="avatarFirst">N</span>
+                </div>
+                <span class="logo-text" id="avatarText">Njoku</span>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li class="my-3"><a href="./dashboard.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Dashboard1.svg" alt="dashboard_icon" class="img-aside"></span><span class="menu-text">Dashboard</span></a></li>
+                    <li class="my-3"><a href="./transactions.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Transactions1.svg" alt="transaction_icon" class="img-aside"></span><span class="menu-text">Transactions</span></a></li>
+                    <li class="active my-3"><a href="./settings.html" class="d-flex align-items-center"><span class="wrap-icon  mr-3"><img src="./assets/icons/Settings.svg" alt="settings_icon" class="img-aside"></span><span class="menu-text">Settings</span></a></li>
+                    <li class="my-5"><a href="./index.html" class="d-flex align-items-center"><span class="wrap-icon logout mr-3"><img src="./assets/icons/logout.svg" alt="logout_icon" class="img-aside logout failed"></span><span class="menu-text font-20 failed">Logout</span></a></li>
+                </ul>
+            </div>
+
+            <div>
+                
+            </div>
+          </div> 
+    </aside>
+    
+    <main class="ml-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md">
+                    <div class="container dashboard">
+                        <div class="row header-menu">
+                            <div class="col-2 mx-4">
+                                <h4 class="my-3">Dashboard</h4>
+                            </div>
+                            <div class="ml-auto">
+                                <a href="">
+                                    <i class="far fa-bell px-1 m-3 notification"></i>
+                                </a>
+                            </div>
+                            <div>
+                                
+                            </div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-5 col-sm-6">
+                                        <div class="col-md p-4 d-flex flex-column purple-bg-color round-corner align-items-left mt-4">
+                                            <span class="text-uppercase font-8"><b> Wallet Balance</b></span>
+                                            <span class="font-20 weight-700 white-color mt-1" id="balance">$4,500.00</span>
+                                            <span class="font-10 weight-600 white-color" id="balance"> NGN 2,304,000.00 </span>     
+                                        </div>
+                                        <div class="p-4 d-flex flex-column purple-bg-color round-corner align-items-left mt-4 h-140">
+                                            <span class="text-uppercase font-10 weight-600"><b>Available Assets</b></span>
+                                            <div class="row mt-2">
+                                                <div class="col">
+                                                    <span class="text-uppercase font-12 weight-600"><b>BTC</b></span>
+                                                    <div><span class="font-10 weight-700 white-color mt-1">3.235323 BTC</span></div> 
+                                                    
+                                                </div>
+                                                <div class="col">
+                                                    <span class="text-uppercase font-12 weight-600"><b>ETH</b></span>
+                                                    <div><span class="font-10 weight-700 white-color mt-1">3.235323 ETH</span></div>
+                                                    
+                                                </div>
+                                                <div class="col">
+                                                    <span class="text-uppercase font-12 weight-600"><b>USDT</b></span>
+                                                    <div><span class="font-10 weight-600 white-color mt-1">3.235323 USDT</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4 sell-crypto">
+                                        <a href="transactions.html">
+                                            <div class="col p-4 d-flex flex-column purple-bg-color light-shadow  round-corner align-items-left mt-4">
+                                                <div class="row-10 mx-1">
+                                                    <h5 ><b>Sell cryptocurrencies</b></h5>
+                                                    <p class="font-12">Sell different cryptocurrencies like BTC, ETH and USDT on the Bitoshi platform</p>
+                                                    <a href="transactions.html">
+                                                        <button class="btn btn-sm btn-secondary border-lg"><span><img src="./assets/icons/sell1.svg" alt="" class="img-aside wobble mr-2">Sell Crypto</span></button>
+                                                    </a>    
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <a href="settings.html#pills-refer">
+                                            <div class="col px-3 py-4 d-flex flex-column bg-with-light-shadow round-corner align-items-left mt-4 h-120">
+                                                <h5 ><b>Refer A Friend</b></h5>
+                                                <p class="font-12 mb-5">Invite your friends over to have their 
+                                                    first sell using your referral link
+                                                     and get a #1000 per referral.</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="pt-1">
+                                            <table class="table table-borderless">
+                                                <thead>
+                                                    <tr>
+                                                        <div class="d-flex flex-row justify-content-between mt-2">
+                                                            <span class="text-uppercase font-10 weight-600 grey-color-2 mx-2">Assets</span>
+                                                            <span class="text-uppercase font-10 weight-600 purple-color-2 text-end mr-2">Rates</span>
+                                                        </div>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex flex-row">
+                                                                <div class="d-flex flex-row justify-content-center align-items-center square round-corner-small light-green-bg-color green-color font-20 ">
+                                                                    <img src="assets/icons/naira.svg" class="usdt-icon" alt="usdt_icon">
+                                                                </div>
+                                                                <div class="d-flex flex-column ps-2 mx-2">
+                                                                    <span class="font-14 weight-700 purple-color ">NGN</span>
+                                                                    <span class="font-10 weight-400 purple-color-2 ">Naira</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-end ">
+                                                                <span class="font-14 weight-700 purple-color-2 ">34%</span>
+                                                                <span class="font-10 weight-400 purple-color-2 ">+7.5%</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex flex-row">
+                                                                <div class="d-flex flex-row justify-content-center align-items-center square round-corner-small font-20 light-orange-bg-color orange-color">
+                                                                    <img src="./assets/icons/btc.svg" alt="bitcoin_icon">
+                                                                </div>
+                                                                <div class="d-flex flex-column ps-2 mx-2">
+                                                                    <span class="font-14 weight-700 purple-color-2">BTC</span>
+                                                                    <span class="font-10 weight-400 purple-color-2">Bitcoin</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-end">
+                                                                <span class="font-14 weight-700 purple-color-2">64%</span>
+                                                                <span class="font-10 weight-400 orange-color">-1.7%</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex flex-row">
+                                                                <div class="d-flex flex-row justify-content-center align-items-center square round-corner-small light-yellow-bg-color yellow-color font-20 ">
+                                                                    <img src="/assets/icons/eth.svg" alt="eth_icon">
+                                                                </div>
+                                                                <div class="d-flex flex-column ps-2 mx-2">
+                                                                    <span class="font-14 weight-700 purple-color-2 ">ETH</span>
+                                                                    <span class="font-10 weight-400 purple-color-2 ">Ethereum</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-end ">
+                                                                <span class="font-14 weight-700 purple-color-2 ">54%</span>
+                                                                <span class="font-10 weight-400 purple-color-2 ">+7.4%</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex flex-row">
+                                                                <div class="d-flex flex-row justify-content-center align-items-center square round-corner-small light-green-bg-color green-color font-20 ">
+                                                                    <img src="assets/icons/usdt.svg" class="usdt-icon" alt="usdt_icon">
+                                                                </div>
+                                                                <div class="d-flex flex-column ps-2 mx-2">
+                                                                    <span class="font-14 weight-700 purple-color ">USDT</span>
+                                                                    <span class="font-10 weight-400 purple-color-2 ">Tether</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-end ">
+                                                                <span class="font-14 weight-700 purple-color-2 ">34%</span>
+                                                                <span class="font-10 weight-400 purple-color-2 ">+7.5%</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="row mt-4">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <table class="table table-border">
+                                                <thead>
+                                                    <tr>
+                                                        <div class="d-flex flex-row justify-content-between my-1">
+                                                            <span class="text-uppercase font-12 weight-600 grey-color-2 mx-2">Transactions</span>
+                                                            <!-- <span class="text-uppercase font-10 weight-600 purple-color-2 text-end mr-2">
+                                                                <a href="dumps.html"></a>View All
+                                                            </span> -->
+                                                        </div>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex flex-row">
+                                                                <div class="d-flex flex-row justify-content-center align-items-center orange-color square round-corner-small light-orange-bg-color font-14">
+                                                                    <i class="fas fa-long-arrow-alt-up"></i>
+                                                                </div>
+                                                                <div class="d-flex flex-column ps-2 mx-2 my-1">
+                                                                    <span class="font-14 weight-700 purple-color-2"> Sent 0.002810982 BTC </span>
+                                                                    <span class="font-10 weight-400 purple-color-2"> $103.59 - <span> NGN 2,403,000.00</span></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-end">
+                                                                <span class=" font-16 weight-700 success">Completed</span>
+                                                                <span class="text-end font-10 weight-400 purple-color-2">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex flex-row ">
+                                                                <div class="d-flex flex-row justify-content-center align-items-center square round-corner-small light-purple-bg-color purple-color-2 font-14 ">
+                                                                    <i class="fas fa-long-arrow-alt-up"></i>
+                                                                </div>
+                                                                <div class="d-flex flex-column ps-2 mx-2">
+                                                                    <span class="font-14 weight-700 purple-color-2">Sent 0.98125 USDT</span>
+                                                                    <span class="font-10 weight-400 purple-color-2 ">$4.59 - NGN 2,403.00</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-end ">
+                                                                <span class="font-16 weight-700 success">Completed</span>
+                                                                <span class="text-end font-10 weight-400 purple-color-2">Thu, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex flex-row ">
+                                                                <div class="d-flex flex-row justify-content-center align-items-center square round-corner-small light-orange-bg-color orange-color font-14 ">
+                                                                    <i class="fas fa-long-arrow-alt-up "></i>
+                                                                </div>
+                                                                <div class="d-flex flex-column ps-2 mx-2">
+                                                                    <span class="font-14 weight-700 purple-color-2 ">Sent 0.6541 ETH</span>
+                                                                    <span class="font-10 weight-400 purple-color-2 ">$10.69 - NGN 3,871.50</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-end ">
+                                                                <span class="font-16 weight-700 orange-color pending">Pending</span>
+                                                                <span class="text-end font-10 weight-400 purple-color-2">Thu, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-4 security">
+                                        <div class="d-flex flex-row justify-content-between mt-2">
+                                            <span class="text-uppercase font-10 weight-600 grey-color-2 mx-2">Security</span>
+                                            <span class="text-uppercase font-10 weight-600 purple-color-2 text-end">View All</span>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-between align-items-center grey-border round-corner px-4 py-3 mt-3">
+                                            <div>
+                                                <span class="d-block font-16 weight-400 purple-color-2">Hide Dashboard Balance</span>
+                                                <span class="d-block font-10 weight-400 purple-color-2">Disabled</span>
+                                            </div>
+                                            <div class="onoffwrapper">
+                                                <input type="checkbox" name="toggle1" id="toggle1" class="onoff" data-toggle="toggle" data-on="Enabled" data-off="Disabled">
+                                                <label for="toggle1"></label>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-between align-items-center grey-border round-corner px-4 py-3 mt-3">
+                                            <div>
+                                                <span class="d-block font-16 weight-400 purple-color-2">Enable Dark Mode</span>
+                                                <span class="d-block font-10 weight-400 purple-color-2" id="textChange">Disabled</span>
+                                            </div>
+                                            <div class="mt-2 px-2" >
+                                                <input type="checkbox" class="checkbox" id="chk" />
+                                                <label class="label" for="chk">
+                                                    <div class="ball"></div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Chat Modal -->
+        <button type="button chatmodal" class="btn custom-bg-normal mx-5 my-4" data-toggle="modal" data-target="#chatpage" id="chatButton">
+            <a href="" data-toggle="tooltip" data-placement="left" title="chat with Customer Care"></a>
+            <i class="fas fa-comment-dots"></i>
+        </button>
+
+        <div class="modal chat" id="chatpage" style="margin-top: 0;" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false">
+                    <div class="modal-dialog">
+                        <div class="modal-content chat">
+                            <div class="modal-header">
+                                <span><img src="./assets/images/bitoshi-chatbot.png" class="align-items-right"></span>
+                                <span class="heading">Bitoshi Support
+                                </span>
+                                <button ><a href="" data-toggle="tooltip" data-placement="top" title="Close"></a><i class="fas fa-times" id="hideModalButton"></i></button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="chat-box">
+                                
+                                <!-- Receivers' Message -->
+                                <div class="d-flex flex-row adm-msg py-1">
+                                  <div class="chat ml-2 p-3">
+                                    <p>
+                                      ....
+                                    </p>
+                                  </div>
+                                </div>
+                                <p class="font-10">12:00 PM | Aug 20</p>
+                              <!-- Senders' Message -->
+                              <div class="d-flex flex-row user-msg">
+                                  <div class="chat ml-2 p-3">
+                                    <p>
+                                      ... 
+                                    </p>
+                                  </div>
+                              </div>
+                              <p class="font-10 my-2 text-end">
+                               12:00 PM | Aug 21
+                              </p>
+                              
+                              <!-- Receivers' Message -->
+                              <div class="d-flex flex-row adm-msg">
+                                <div class="chat ml-2 p-3">
+                                  <p>
+                                    ........
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="font-10">12:00 PM | Aug 22</div>
+                              <!-- Senders' Message -->
+                              <div class="d-flex flex-row p-3 user-msg">
+                                  <div class="chat ml-2 p-3">
+                                    <p>
+                                     ....
+                                    </p>
+                                  </div>
+                              </div>
+                              <div class="font-10 my-2 text-end my-5">
+                                <p></p>12:00 PM | Aug 23</p>
+                              </div>    
+                            </div>
+
+                            <!-- Typing area -->
+                            <form action="#" class="chatModal bg-light my-5">
+                              <div class="input-group">
+                                <input type="text" placeholder="Type a message" class="form-control rounded-0 border-0 py-4 bg-light">
+                                <div class="input-group-append">
+                                  <button id="button-addon2" type="submit" class="btn btn-link"> <i class="fa fa-paper-plane"></i></button>
+                                </div>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        <!-- Tab Menu -->
+        <div class="tab-nav-container">
+            <div class="tab active purple">
+                <i class="fas fa-wallet"></i>
+                <p>Dashboard</p>
+            </div>
+    
+            <div class="tab pink">
+                <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+                <p>Transactions</p>
+            </div>
+    
+            <div class="tab yellow">
+                <i class="fas fa-credit-card"></i>
+                <p>GiftCards</p>   
+            </div>
+    
+            <div class="tab teal">
+                <i class="fa fa-cog"></i>
+                <p>Settings</p>
+            </div>
+        </div>
+    </main>
+    <script src="tab-bar.js"></script>
+
+
+
+    
+    <!-- jQuery CDN -->
+    <script src="node_modules/jquery/dist/jquery.slim.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Popper.js CDN -->
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    
+    <!-- Side Navigation -->
+    <script>
+        $(function() {
+            'use strict';
+
+            $('.js-menu-toggle').click(function(e) {
+
+                var $this = $(this);
+
+                
+
+                if ( $('body').hasClass('show-sidebar') ) {
+                    $('body').removeClass('show-sidebar');
+                    $this.removeClass('active');
+                } else {
+                    $('body').addClass('show-sidebar');	
+                    $this.addClass('active');
+                }
+
+                e.preventDefault();
+
+            });
+
+            // click outisde offcanvas
+            $(document).mouseup(function(e) {
+            var container = $(".sidebar");
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                if ( $('body').hasClass('show-sidebar') ) {
+                        $('body').removeClass('show-sidebar');
+                        $('body').find('.js-menu-toggle').removeClass('active');
+                    }
+            }
+            }); 
+
+            
+
+            });
+    </script>
+
+    <script>
+        // Close Chat ModalOption
+        $('#hideModalButton').click(function(){
+            $("#chatpage").modal("hide");
+        });
+    </script>
+    <!-- Modal Stacked on bottom left -->
+    
+
+    <!-- Copy To Clipboard -->
+    <script>
+    </script>
+    
+    <script>
+        const chk = document.getElementById('chk');
+        
+        chk.addEventListener('change', () => {
+            document.body.classList.toggle('dark');
+            
+        });
+
+
+        // if(document.body.classList.toggle(('dark')) == true ? "Ebaled" : "Disabled"){
+            
+        // }
+        // else {
+        //     return switchText.innerText = "Disabled"
+        // }
+        
+    </script> 
+    <!-- <script>
+        $(document).ready(function($){
+            $('.toggle2').click(function(){
+               $(".toggle2").toggleClass("active"); 
+               $("body").toggleClass("dark");
+               $.cookie("toggle2", $(".toggle2").hasClass('active'));
+            });
+
+            if($.cookie("toggle2") == true) {
+                $("toggle2").addClass("active");
+                $(".body").hasClass("dark");
+            }
+        })
+    </script> -->
+    <script>
+        function getAvatar(){
+            var firstLetter = this.getField('').value
+        }
+    </script>
+</body>
+</html>

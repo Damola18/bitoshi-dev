@@ -1,0 +1,17 @@
+node_modules
+.env
+.vscode
+/sidebar.html
+bitoshi-key
+bitoshi.pub
+users
+vendors
+workon.html
+workon.css
+chat
+socketChat
+backup-dashboard
+chatbox.html
+dump.html
+support
+./setting.html
