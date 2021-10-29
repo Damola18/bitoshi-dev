@@ -278,7 +278,7 @@ aside .side-inner .nav-menu ul li.active a {
     /*for IE*/ 
 }
   
-  .burger:focus {
+.burger:focus {
     outline: none; 
 }
   
