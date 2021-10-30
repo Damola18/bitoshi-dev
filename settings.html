@@ -225,7 +225,7 @@
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-success my-5" id="resetPassword" onclick="resetPwd()" style="border:none">Reset Password</button>
+                                    <button type="submit" class="btn btn-success my-5" class=".colored-toast.swal2-icon-success" id="resetPassword" onclick="resetPwd()" style="border:none">Reset Password</button>
                                 </div>
                             </section>
                         </div>
@@ -536,7 +536,6 @@
     
     <!-- Popper -Js -->
     <script src="assets/js/popper.min.js"></script>
-    
     <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
@@ -639,8 +638,26 @@
                 toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
         })
+
         var profileBtn = document.getElementById("updateProfile");
         profileBtn.addEventListener('click', function (){
+            toastMixin.fire({
+                toast:true, 
+                icon: 'success',
+                title: 'Changes Saved',
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+        })
+
+        var resetBtn = document.getElementById("resetPassword");
+        resetBtn.addEventListener('click', function (){
             toastMixin.fire({
                 toast:true, 
                 icon: 'success',
