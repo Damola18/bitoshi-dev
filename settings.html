@@ -40,8 +40,6 @@
             box-shadow: 0 1px 2px 0 rgb(0 0 0 / 15%);
             box-shadow: 0 1px 2px 0 rgb(0 0 0 / 15%);
             border-top: 5px solid #fad48f;
-            /* box-shadow: 0px 4px 4px 0px #00000040;
-            box-shadow: 0px 4px 2px 0px #00000026 inset; */
             border-radius: 5px;
 
         }
@@ -54,13 +52,6 @@
         .img-bank{
             max-width:100%;
         }
-        /* .modal-dialog .modal-dialog-centered .accountTab{
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            bottom:200px;
-        } */
         .colored-toast.swal2-icon-success {
             background-color: #a5dc86 !important;
         }
@@ -111,8 +102,8 @@
               <ul>
                 <li class="my-3"><a href="./dashboard.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Dashboard1.svg" alt="dashboard_icon" class="img-aside"></span><span class="menu-text">Dashboard</span></a></li>
                 <li class="my-3"><a href="./transactions.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Transactions1.svg" alt="transaction_icon" class="img-aside"></span><span class="menu-text">Transactions</span></a></li>
-                <!-- <li class="my-3"><a href="./my-giftcards.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Giftcard.svg" alt="giftcard_icon" class="img-aside"></span><span class="menu-text">Giftcards</span></a></li> -->
                 <li class="active my-3"><a href="./settings.html" class="d-flex align-items-center"><span class="wrap-icon  mr-3"><img src="./assets/icons/Settings.svg" alt="settings_icon" class="img-aside"></span><span class="menu-text">Settings</span></a></li>
+                <li class="my-3"><a href="./earn.html" class="d-flex align-items-center"><span class="wrap-icon  mr-3"><img src="./assets/icons/Walletb ype A.svg" alt="settings_icon" class="img-aside"></span><span class="menu-text">Earn</span></a></li>
                 <li class="my-3"><a href="./index.html" class="d-flex align-items-center"><span class="wrap-icon logout mr-3"><img src="./assets/icons/logout.svg" alt="logout_icon" class="img-aside logout"></span><span class="menu-text font-20 failed">Logout</span></a></li>
               </ul>
             </div>
@@ -121,7 +112,7 @@
             </div>
           </div> 
     </aside>
-    <main>
+    <main class="user-dashboard">
         <div class="container dashboard">
             <div class="row header-menu">
                 <div class="col-2 mx-auto my-2">
@@ -131,7 +122,7 @@
 
 
             <div class="row mx-1">
-                <div class="col">
+                <div class="col" id="settingsPage">
                     <ul class="nav nav-pills" id="settingsTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
@@ -147,9 +138,6 @@
                         <li class="nav-item">
                             <a class="nav-link" id="pills-faq-tab" data-toggle="pill" href="#pills-faq" role="tab" aria-controls="faq" aria-selected="false">FAQs</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-refer-tab" data-toggle="pill" href="#pills-refer" role="tab" aria-controls="referral" aria-selected="false">Refer A Friend</a>
-                        </li>
                     </ul>
                     
                     <div class="tab-content my-4" id="pillsTabcontent">
@@ -157,7 +145,7 @@
                         <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <section>
                                 <div class="inner mx-2">
-                                    <h5 class="py-3"><b>Edit Profile</b></h5>
+                                    <h5 class="py-3 font-16"><b>Edit Profile</b></h5>
                                     <div class="row my-3">
                                         <div class="col">
                                             <div class="form-group">
@@ -219,7 +207,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="confirmPassword">Confirm New Passwprd</label>
+                                                <label for="confirmPassword">Confirm New Password</label>
                                                 <input type="text" class="form-control" id="confirmPassword" name="confirmPassword"  placeholder="Confirm New Password" value="">   
                                             </div>
                                         </div>
@@ -499,22 +487,24 @@
         </div>
         
         <div class="tab-nav-container">
-            <div class="tab purple">
-                <!-- <i class="fa fa-th-large" aria-hidden="true"></i> -->
-                <i class="fas fa-wallet"></i>
+            <div class="tab">
+                <img src="./assets/icons/Dashboard1.svg" alt="dashboard_icon" class="img-aside">
                 <p>Dashboard</p>
             </div>
     
-            <div class="tab pink">
-                <i class="fas fa-exchange-alt" aria-hidden="true"></i>
-                <i class="far fa-comments@2x"></i>
+            <div class="tab">
+                <img src="./assets/icons/Transactions1.svg" alt="transaction_icon" class="img-aside">
                 <p>Transactions</p>
             </div>
     
-            <div class="tab active teal">
-                <i class="fa fa-cog">
-                </i>
+            <div class="tab active">
+                <img src="./assets/icons/Settings.svg" alt="settings_icon" class="img-aside">
                 <p>Settings</p>
+            </div>
+
+            <div class="tab">
+                <img src="./assets/icons/Walletb ype A.svg" alt="settings_icon" class="img-aside">
+                <p>Earn</p>
             </div>
         </div>
     </main>

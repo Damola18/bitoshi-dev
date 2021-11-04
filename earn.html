@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Links -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/toggle.css">
+    <link rel="stylesheet" href="css/tab-bar.css"> 
+    <link rel="stylesheet" href="css/gijgo.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+    <script src="script.js"></script>
+    
+
+    <!-- FONT AWESOME CDN Links -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+    <title>Settings | Bitoshi</title>
+    <style>
+        section{
+            width:100%;
+            background: #fff;
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 15%);
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 15%);
+            border-top: 5px solid #fad48f;
+            border-radius: 5px;
+
+        }
+        section .inner{
+            margin:3px auto;
+        }
+        .bank-image{
+            flex-basis:40%;
+        }
+        .img-bank{
+            max-width:100%;
+        }
+        .colored-toast.swal2-icon-success {
+            background-color: #a5dc86 !important;
+        }
+        .account{
+            /* display:flex;
+            justify-content: center;
+            align-items: center; */
+            position:relative;
+            width: 100%;
+            height: 400px;
+            overflow:hidden;
+        }
+        .position-absolute {
+            position: absolute !important;
+        }
+
+        .form-control small {
+            color: var(--error-color);
+            position: absolute;
+            top: 60px;
+            left: 0;
+            visibility: visible;
+        }
+
+        .form-group.error small {
+            visibility: visible;
+        }
+
+    </style>
+</head>
+<body>
+    <aside>
+        <div class="toggle">
+            <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+                  <span></span>
+                </a>
+          </div>
+          <div class="side-inner">
+            <div class="logo-wrap">
+                <div class="logo" onload="getAvatar()">
+                  <span class="text-center mx-3" id="avatarFirst">N</span>
+                </div>
+                <span class="logo-text" id="avatarText">Njoku</span>
+            </div>
+
+
+            <div class="nav-menu">
+              <ul class="icon-pack">
+                <li class="my-3"><a href="./dashboard.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Dashboard1.svg" alt="dashboard_icon" class="img-aside"></span><span class="menu-text">Dashboard</span></a></li>
+                <li class="my-3"><a href="./transactions.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Transactions1.svg" alt="transaction_icon" class="img-aside"></span><span class="menu-text">Transactions</span></a></li>
+                <li class="my-3"><a href="./settings.html" class="d-flex align-items-center"><span class="wrap-icon  mr-3"><img src="./assets/icons/Settings.svg" alt="settings_icon" class="img-aside"></span><span class="menu-text">Settings</span></a></li>
+                <li class="my-3 active"><a href="./earn.html" class="d-flex align-items-center"><span class="wrap-icon  mr-3"><img src="./assets/icons/Walletb ype A.svg" alt="settings_icon" class="img-aside"></span><span class="menu-text">Earn</span></a></li>
+                <li class="my-3"><a href="./index.html" class="d-flex align-items-center"><span class="wrap-icon logout mr-3"><img src="./assets/icons/logout.svg" alt="logout_icon" class="img-aside logout"></span><span class="menu-text font-20 failed">Logout</span></a></li>
+              </ul>
+            </div>
+            <div>
+                
+            </div>
+          </div> 
+    </aside>
+    <main>
+        <div class="container dashboard">
+            <div class="row header-menu">
+                <div class="col-2 mx-auto my-3">
+                    <h4 class="my-5">Earn</h4>
+                </div>
+            </div>
+
+            <!-- Referral Tab -->
+            <section>
+                <div class="inner mx-3">
+                    <h5 class="py-3"><b>Refer A Friend</b></h5>
+                </div>
+
+                <div class="mx-3">
+                    <p>
+                        Share your referral link to new friends who sign up on Bitoshi and earn bonuses.
+                    </p>
+                    <div>
+                        <button type="submit" class="btn btn-success my-5" id="referral" onclick="generateLink()" style="border:none">Generate Link</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <div class="tab-nav-container">
+            <div class="tab">
+                <img src="./assets/icons/Dashboard1.svg" alt="dashboard_icon" class="img-aside">
+                <p>Dashboard</p>
+            </div>
+    
+            <div class="tab">
+                <img src="./assets/icons/Transactions1.svg" alt="transaction_icon" class="img-aside">
+                <p>Transactions</p>
+            </div>
+    
+            <div class="tab active">
+                <img src="./assets/icons/Settings.svg" alt="settings_icon" class="img-aside">
+                <p>Settings</p>
+            </div>
+
+            <div class="tab">
+                <img src="./assets/icons/Walletb ype A.svg" alt="settings_icon" class="img-aside">
+                <p>Earn</p>
+            </div>
+        </div>
+    </main>
+    
+    <script src="tab-bar.js"></script>
+
+
+    
+    <!-- jQuery CDN -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.slim.js"></script>
+    <!-- <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.slim.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    
+
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    
+    
+    <!-- Popper -Js -->
+    <script src="assets/js/popper.min.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="src/main.js"></script> -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="sweetalert2.all.min.js"></script> -->
+    <!-- Side Navigation -->
+    <script>
+        $(function() {
+            'use strict';
+
+            $('.js-menu-toggle').click(function(e) {
+
+                var $this = $(this);
+                if ( $('body').hasClass('show-sidebar') ) {
+                    $('body').removeClass('show-sidebar');
+                    $this.removeClass('active');
+                } else {
+                    $('body').addClass('show-sidebar');	
+                    $this.addClass('active');
+                }
+                e.preventDefault();
+
+            });
+
+            // click outisde offcanvas
+            $(document).mouseup(function(e) {
+            var container = $(".sidebar");
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                if ( $('body').hasClass('show-sidebar') ) {
+                        $('body').removeClass('show-sidebar');
+                        $('body').find('.js-menu-toggle').removeClass('active');
+                    }
+            }
+            });
+        });
+    </script>
+    
+    <script>
+            $('#settingsTab a').on('click', function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            })
+    </script>
+    
+    <script>
+      // Close Chat ModalOption
+        $('#hideModalButton').click(function(){
+            $("#chatpage").modal("hide");
+        });
+    </script>
+
+    <!-- Modal Stacked on bottom left -->
+    <!-- <script>
+      $('#chatpage').on('show.bs.modal', function () {
+        $('#chatpage').css("margin-top", 
+        $(window).height() / 2 - $('.modal-content').height() / 2);
+      });
+    </script> -->
+
+
+    <!-- Dark/Light Mode Toggle -->
+    <script>
+        const chk = document.getElementById('chk');
+        
+        chk.addEventListener('change', () => {
+            document.body.classList.toggle('dark');
+        });
+    </script> 
+    
+    <!-- Date Selector -->
+    <script>
+        $('#datepicker').datepicker({ 
+            format: 'dd mmm yyyy' ,
+            keyboardNavigation: true,
+            modal: true, 
+            header: true, 
+            footer: true ,
+            value: '02 Sep 1970',
+        });
+     </script>
+    
+    <script>
+        var toastMixin = Swal.mixin({
+            toast:true,
+            icon:'success',
+            width:250,
+            height: 100,
+            iconColor: 'white',
+            customClass: {
+                popup: 'colored-toast'
+            },
+            title:"General Title",
+            animation: true,
+            position: "top-right",
+            showConfirmButton: true, 
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        var profileBtn = document.getElementById("updateProfile");
+        profileBtn.addEventListener('click', function (){
+            toastMixin.fire({
+                toast:true, 
+                icon: 'success',
+                title: 'Changes Saved',
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+        })
+
+        var resetBtn = document.getElementById("resetPassword");
+        resetBtn.addEventListener('click', function (){
+            toastMixin.fire({
+                toast:true, 
+                icon: 'success',
+                title: 'Changes Saved',
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+        })
+    </script>
+</body>
+</html>
