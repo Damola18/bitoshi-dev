@@ -7,7 +7,6 @@
 
     <!-- CSS Links -->
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/custom.css">
@@ -18,32 +17,113 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
     <title>Bitoshi</title>
     <style>
+        html{
+            width:100%;
+            overflow-x:hidden;
+        }
+        .card{
+            background-color:none;
+            border:none;
+        }
+        .what-we-offer{
+            position: relative;
+            top:120px;
+        }
+        .testimonial{
+            position: relative;
+            top:50px;
+        }
+        /* Review section */
+        .mr-5{
+            margin-right: 6.4rem !important;
+        }
+        .ml-5{
+            margin-left: 6.4rem !important;
+        }
+        @media (max-width: 576px) {
+            .infiniteScale img{
+                height:80%;
+                position: relative;
+                top:60px;
+            }
+            .what-we-offer{
+                position: relative;
+                top:450px;
+            }
+            .getting-started{
+                position: relative;
+                top:390px;
+                background: none;
+            }
+            .getting-started img{
+                position: relative;
+                width:90%;
+                left:0px;
+                bottom:10px;
+            }
+            .getting-started .ready{
+                position: relative;
+                bottom:140px;
+            }
+            .getting-started .header h2{
+                position: relative;
+                right:20px;
+                font-size: 20px;
+            }
+            .testimonial{
+                position: relative;
+                top:400px;
+            }
+            .testimonial h1{
+                font-size: 17px;
+            }
+
+             /* Review  Section */
+             .hide {
+                display: none;
+            }
+            .f-12 {
+                font-size: 12px;
+            }
+            .h-20 {
+                font-size: 20px;
+            }
+            .mr-5{
+                margin-right: 3rem !important;
+            }
+            .ml-5{
+                margin-left: 3rem !important;
+            }
+            .card{
+                background:#fff;
+                color:rgba(0, 0, 0, 0.658);
+                border:1px solid rgb(36, 35, 35);
+            }
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md nav-orientation bg-white shadow sticky-top">
-        <div class="container">
-            <a class="navbar-brand">
-                <img src="./assets/images/Bitoshi-logo.png" alt="bitoshi_logo">
-            </a>
+    <nav class="navbar navbar-expand-lg nav-orientation bg-white shadow sticky-top">
+        <a class="navbar-brand">
+            <img src="./assets/images/Bitoshi-logo.png" alt="bitoshi_logo">
+        </a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="navbar" aria-expanded="false" data-toggle="collapse">
-                <span class="toggler-icon">
-                  <img src="assets/icons/hamburger.svg" alt="hamburger_icon">
-                </span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="Navbar">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item py-2"><a class="nav-link active">Home</a>
-                    </li>
-                    <li class="nav-item py-2"><a class="nav-link" href="dashboard.html">Portfolio</a></li>
-                    <li class="nav-item py-2"><a class="nav-link" href="./login.html">Login</a></li>
-                    <li class="nav-item "><a class="nav-link" href="./register.html" id="signup"> 
-                        <input type="submit" class="btn  btn-block" value="Sign up">
-                    </a></li>
-                </ul>
-            </div>    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="navbar" aria-expanded="false" data-toggle="collapse">
+            <span class="toggler-icon">
+              <img src="assets/icons/hamburger.svg" alt="hamburger_icon">
+            </span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="Navbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item py-2"><a class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item py-2"><a class="nav-link" href="dashboard.html">Portfolio</a></li>
+                <li class="nav-item py-2"><a class="nav-link" href="./login.html">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="./register.html" id="signup"> 
+                    <input type="submit" class="btn btn-block" value="Sign up">
+                </a></li>
+            </ul>
         </div>
     </nav>
 
@@ -74,56 +154,49 @@
     </section>
     
     <!-- What We Offer -->
-    <section class="info-section justify-content-center align-items-center">
-        <div class="container info">
-           <h1>What We Offer</h1>
-           <br>
-           <div class="row m-3 card-head">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" 
-                    data-aos="flip-left" data-aos-easing="ease-out-cubic" 
-                    data-aos-duration="2000">
-                   <div class="card text-center">
-                        <div class="card-header">
+    <section class="what-we-offer text-center">
+        <div class="container">
+            <h1 class="pb-2" style="color:#fad28f;">What We Offer</h1>
+            <div class="row mb-5">
+                <div class="col-lg-4 pt-1">
+                    <div class="mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="d-flex justify-content-center align-items-center mb-3">
                             <img src="./assets/icons/instant buy n sell.svg" alt="instant_sell" class="img-bit">
                         </div>
-                       <div class="card-body">
-                           <p><b>Instant Sell</b></p>
-                           <p>Your provided bank account is credited instantly when you sell coins</p>
-                       </div>
-                   </div>
-               </div>
-
-               <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="card text-center">
-                        <div class="card-header">
-                            <img src="./assets/icons/unique wallet.svg" alt="unique_wallet" class="img-bit">
-                        </div>
-                        <div class="card-body">
-                            <p><b>Unique Wallet Address</b></p>
-                            <p>A unique wallet address is assigned to you that can be reused always!</p>                        </div>
-                    </div>
-               </div>
-
-               <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="card text-center">
-                    <div class="card-header">
-                        <img src="./assets/icons/no_hidden_charges.svg" alt="no_charges" class="img-bit">
-                    </div>
-                    <div class="card-body">   
-                        <p><b>No Hidden Charges</b></p>
-                        <p>There are no extra fees when you sell on Bitoshi</p>
+                        <p><b>Instant Sell</b></p>
+                        <p class="font-14">Your provided bank account is credited instantly when you sell coins</p>
                     </div>
                 </div>
-           </div>
+                <div class="col-lg-4 pt-1">
+                    <div class="mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <img src="./assets/icons/unique wallet.svg" alt="instant_sell" class="img-bit">
+                        </div>
+                        <p><b>Unique Wallet</b></p>
+                        <p class="font-14">A unique wallet address is assigned to you that can be reused always!</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 pt-1">
+                    <div class="mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <img src="./assets/icons/no_hidden_charges.svg" alt="instant_sell" class="img-bit">
+                        </div>
+                        <p><b>No Hidden Charges</b></p>
+                        <p class="font-14">There are no extra fees when you sell on Bitoshi</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="getting-started my-5">
+
+    <section class="getting-started">
         <div class="row">
             <div class="col-md">
-                <img src="assets/images/illustration_screen.png" alt="loader" class="h-500">
+                <img src="assets/images/illustration_screen.png" alt="loader">
             </div>
-            <div class="col-md my-5">
+
+            <div class="ready col-md my-5">
                 <div class="header text-left">
                     <h2><b>Ready to start selling Bitcoin?</b></h2>
                 </div>
@@ -163,74 +236,128 @@
         </div>
     </section>
 
-    <section class="customer-review">
-        <div class="container">
-            <div class="content">
-                <div class="container ">
-                  <div class="row">
-                    <div class="col-12 text-center">
-                      <h2>What Customers Are Saying</h2>
+    <!-- Start: Testimonials -->
+    <div class="testimonial p-5">
+        <div>
+            <h1 class="text-center">What Customers Are  Saying</h1>
+            <div class="text-center">
+                <i class="fas fa-quote-left"></i>
+            </div>
+        </div>
+        <div class="carousel slide" data-ride="carousel" id="carousel-2">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container p-5">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p class="card-text f-12">Lorem, ipsum.</p>
+                                        <h4 class="card-title h-20">Lola Janet</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 hide">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p class="card-text f-12">Lorem, ipsum dolor.</p>
+                                        <h4 class="card-title h-20">Sarah</h4> 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 hide">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p class="card-text f-12">Lorem ipsum dolor sit.</p>
+                                        <h4 class="card-title">James</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
-            
-                    <div class="quote-marker col-12 text-center">
-                      
-                    </div>
-                  </div>
                 </div>
-            
-            
-                <div class="mb-5">
-                    <div class="container review">
-                        <div class="owl-carousel owl-2">
-                        <div class="review-slide">
-                            <div class="card">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, dolorem iusto officia! Quis tenetur maxime, laboriosam saepe, voluptate necessitatibus tempora!</p>
-                            <h3>Alex Fought</h3>
+
+                <div class="carousel-item">
+                    <div class="container p-5">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p class="card-text f-12">Lorem ipsum dolor sit amet.</p>
+                                        <h4 class="card-title h-20">Rafael</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 hide">
+                                <div class="card"><div class="card-body text-center">
+                                        <p class="card-text f-12">Lorem ipsum dolor sit amet consectetur..</p>
+                                        <h4 class="card-title">Phil</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 hide">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p class="card-text f-12">Lorem ipsum dolor sit amet consectetur.</p>
+                                        <h4 class="card-title">Laide</h4> 
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                
-                        <div class="review-slide">
-                            <div class="card">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, dolorem iusto officia! Quis tenetur maxime, laboriosam saepe, voluptate necessitatibus tempora!</p>
-                            <h3>Ben Stafford</h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="container p-5">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p class="card-text f-12">Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
+                                        <h4 class="card-title h-20">Max</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 hide">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p class="card-text f-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                        <h4 class="card-title">Louisville</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 hide">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p class="card-text f-12">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo.</p>
+                                        <h4 class="card-title">Matt</h4>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                
-                        <div class="review-slide">
-                            <div class="card">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, dolorem iusto officia! Quis tenetur maxime, laboriosam saepe, voluptate necessitatibus tempora!</p>
-                            <h3>Devin Bridges</h3>
-                            </div>
-                        </div>
-                
-                        <div class="review-slide">
-                            <div class="card">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, dolorem iusto officia! Quis tenetur maxime, laboriosam saepe, voluptate necessitatibus tempora!</p>
-                            <h3>Joshua Jones</h3>
-                            </div>
-                        </div>
-                
-                        <div class="review-slide">
-                            <div class="card">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, dolorem iusto officia! Quis tenetur maxime, laboriosam saepe, voluptate necessitatibus tempora!</p>
-                            <h3>Kellie Kenney</h3>
-                            </div>
-                        </div>
-                
-                        <div class="review-slide">
-                            <div class="card">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, dolorem iusto officia! Quis tenetur maxime, laboriosam saepe, voluptate necessitatibus tempora!</p>
-                            <h3>Will Reagan</h3> 
-                            </div>
-                        </div>
-            
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+            <div>
+                <a class="carousel-control-prev" href="#carousel-2" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon mr-5" style="color:#000;"></span><span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-2" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon ml-5" style="color:#000;"></span><span class="sr-only">Next</span>
+                </a>
+            </div>
 
-    <!-- closing section gift cards pack-->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-2" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-2" data-slide-to="1"></li>
+                <li data-target="#carousel-2" data-slide-to="2"></li>
+            </ol>
+        </div>
+    </div>
+    
+    <!-- End: Testimonials -->
     <section class="footer-menu">
         <footer class="container ml-5">
             <div class="row text-left">
@@ -276,13 +403,9 @@
     <script src="assets/js/jquery.slim.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="assets/js/bootstrap.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="src/owl.carousel.min.js"></script>
-    <script src="src/carousel.js"></script>
 
     <script>
         gsap.from(".hero-header", {opacity:0, duration: 1, x: -900, ease: Bounce.easeOuteaseOut})

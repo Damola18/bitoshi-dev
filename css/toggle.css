@@ -22,15 +22,9 @@ body{
     background: var(--background-color);
 }
 
-body.dark{
+/* body.dark{
     background: #121212;
 
-}
-/* .darkModer input+label::before{
-    background:red;
-}
-.darkModer input+label::before{
-    background:yellow
 } */
 .avatar-text.light{
     color:#fff;
@@ -43,7 +37,6 @@ body.dark{
 
 .label {
 	background-color: #DBE3E5;
-	/*  */
 	border-radius: 50px;
 	cursor: pointer;
 	display: flex;
@@ -53,7 +46,6 @@ body.dark{
     margin-left:0px;
     padding-left:2px;
 	position: relative;
-    
 	height: 21px;
 	width: 38px;
 	transform: scale(1.5);
@@ -78,15 +70,4 @@ body.dark{
 .checkbox:checked + .label .ball {
 	background-color: var(--success-color);
 	transform: translateX(12.5px);
-}
-.checkbox:checked + .fa-moon{
-    color:#ace;
-}
-
-.fa-moon {
-	color: var(--custom-color-dark);
-}
-
-.fa-sun {
-	color: var(--custom-color-dark);
 }
