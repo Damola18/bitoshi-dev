@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
     <title>Get Started | Bitoshi</title>
     <style>
+        .container .register{
+            margin-top: 50px;
+        }
         #profile-image {
             width: 150px;
             height: 150px;
@@ -37,11 +40,26 @@
             position:relative;
             margin-left:30px;
         }
-        
+        .form-group p{
+                position: relative;
+                right:8px;
+                top:10px;
+                font-size:8px;
+                color:#c4c4c4;
+            }
         @media screen and (max-width:576px){
             .form-group label{
                 position: relative;
                 left:30px;
+            }
+            .form-group p{
+                position: relative;
+                left:30px;
+                top:10px;
+                font-size:6px;
+            }
+            .form-group input{
+                font-size:12px;
             }
         }
     </style>
@@ -92,8 +110,10 @@
                   </div>
                   <div class="form-group">
                     <label for="password" id="passwordLabel">Password</label>
-                    <input type="password" class="bit-reg form-control" id="password" value="" placeholder="Must have at least 6 characters" autocapitalize="off" autocorrect="off">
+                    <input type="password" class="bit-reg form-control" id="password" value="" placeholder="Must have at least 8 characters" autocapitalize="off" autocorrect="off">
+                    <p>Password must contain at least one uppercase letter, one lowercase letter and a number</p> 
                     <small class="text-muted">Error message ...</small>
+                    
                 </div>
                 <div class="d-flex justify-content-center">
                     <a href="./confirmemail.html">

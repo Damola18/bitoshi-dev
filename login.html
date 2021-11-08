@@ -17,25 +17,27 @@
     <title> Sign in | Bitoshi</title>
     <style>
         .form-control{
-        width:80%;
-        position:relative;
-        margin-left:30px;
-    }
-
-    
-    @media screen and (max-width:576px){
-        .form-group label{
-            position: relative;
-            left:30px;
+            width:80%;
+            position:relative;
+            margin-left:30px;
         }
-    }
+
         
+        @media screen and (max-width:576px){
+            .form-group label{
+                position: relative;
+                left:30px;
+            }
+            .form-group input{
+                font-size:12px;
+            }
+        }    
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-white sticky-top">
         <div class="container">
-            <a href="./index.html" class="navbar-brand">
+            <a href="/index.html" class="navbar-brand">
                 <img src="./assets/images/Bitoshi-logo.png" alt="bitoshi_logo">
             </a>
 
@@ -45,13 +47,14 @@
                 </span>
             </button>
 
+            
             <div class="collapse navbar-collapse" id="Navbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item py-2"><a class="nav-link" href="index.html">Home</a>
                     </li>
-                    <li class="nav-item py-2"><a class="nav-link" href="./dashboard.html">Portfolio</a></li>
-                    <li class="nav-item py-2"><a class="nav-link active">Login</a></li>
-                    <li class="nav-item "><a class="nav-link" href="./register.html" id="signup"> 
+                    <li class="nav-item py-2"><a class="nav-link" href="dashboard.html">Portfolio</a></li>
+                    <li class="nav-item py-2"><a class="nav-link" href="./login.html">Login</a></li>
+                    <li class="nav-item "><a class="nav-link active" id="signup"> 
                         <input type="submit" class="btn  btn-block" value="Sign up">
                     </a></li>
                 </ul>
@@ -87,6 +90,10 @@
         </form>
     </div>
     
+    <script src="assets/js/jquery.slim.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

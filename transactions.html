@@ -12,20 +12,58 @@
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/toggle.css">
-    <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/tab-bar.css">
-    
+    <link rel="stylesheet" href="css/datatables.min.css">
 
     
     <!-- FONT AWESOME CDN Links -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+    
+    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    
+    
     <title>My Transactions | Bitoshi</title>
 
     <style>
-        
+        html,body{
+            overflow-x: hidden;
+        }
         .colored-toast.swal2-icon-success {
             background-color: #a5dc86 !important;
+        }
+        tbody td:nth-child(1){
+            position: relative;
+            bottom:7px;
+        }
+        td:nth-child(1) {
+            width: 2%;
+        }
+        td:nth-child(2) {
+            width: 15%;
+        }
+        table{
+            position: relative;
+            right:30px;
+        }
+        @media (max-width: 576px) {
+            table{
+                width:30%;
+                position: relative;
+                right:20px;
+            }
+
+        }
+        table.dataTable thead th {
+            border-bottom: none;
+        }
+        
+        table.dataTable tfoot th {
+            border-top: none;
+            border-bottom: 1px solid  #111;
+        }
+        [type=search] {
+            outline-offset: none;
         }
     </style>
 </head>
@@ -77,7 +115,7 @@
                             <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
                                 <li class="nav-item">
                                   <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" 
-                                  aria-controls="pills-home" aria-selected="true"><span><img src="./assets/icons/Layer 2.svg" alt="" class="img-aside mr-2 mb-1"></span> Bitcoin</a>
+                                  aria-controls="pills-home" aria-selected="true"><span><img src="./assets/icons/Layer 2.svg" alt="" class="img-aside mr-2 mb-1"></span>Bitcoin</a>
                                 </li>
                                 <li class="nav-item">
                                   <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" 
@@ -85,7 +123,7 @@
                                 </li>
                                 <li class="nav-item">
                                   <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" 
-                                  aria-controls="pills-contact" aria-selected="false"><span><img src="./assets/icons/Layer 3.svg" alt="" class="img-aside mr-2 mb-1"></span>USDT</a>
+                                  aria-controls="pills-contact" aria-selected="false"><span><img src="./assets/icons/Layer 3.svg" alt="" class="img-aside mr-2 mb-1"></span>Tether</a>
                                 </li>
                             </ul>
                             
@@ -93,7 +131,7 @@
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                     <div class="text-center">
                                         <p>Receiving Address</p>
-                                        <div class="copyText" id="walletAddress1">
+                                        <div class="copyText font-10" id="walletAddress1">
                                             3ByGgw9QiWHohNckR23mGTWjbmk3XKmES9
                                         </div>
                                     </div>
@@ -106,12 +144,15 @@
                                             data-toggle="modal" data-target="#btcAddressModal">
                                             <img src="./assets/icons/unique wallet.svg" alt="" class="img-plus mr-3" href="">
                                         </button>
-                                        
-                                        <div class="text-center mt-4">
+
+                                        <div class="text-center my-3">
+                                            <p >Sell: 554/USD</p>
+                                        </div>
+                                        <div class="text-center mt-4 font-8">
                                             <p>You can always send Bitcoin to this address and get paid directly to your provided bank details.</p>
                                             <p class="text-danger">Ensure you use a high (priority) sending fee when sending from a reputable platform for fast confirmation.</p>
                                             <p>Payment will be processed after we receive 1 block confirmation of your payment</p>
-                                            <button class="btn btn-danger mb-3" type="button">
+                                            <button class="btn btn-danger mb-3 font-10" type="button">
                                                 Confirm Transaction
                                             </button>
                                         </div>
@@ -138,11 +179,11 @@
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                     <div class="text-center">
                                         <p>Receiving Address</p>
-                                        <div class="copyText"  id="walletAddress2">
+                                        <div class="copyText font-10"  id="walletAddress2">
                                             0x580d2436c07a8d8a7b67ad59da9a942a50bc235e
                                         </div>
                                     </div>
-
+                                    
                                     <div class="col-md-12 ml-3 mt-2 text-right">
                                         <button type="button" onclick="copyToClipboard2('walletAddress2')" class="btn btn-dark mr-4" class=".colored-toast.swal2-icon-success" id="copyWallet">Copy Address</button>
                                         <button type="button" onclick="getEthQr()"class="btn" 
@@ -150,7 +191,11 @@
                                             <img src="./assets/icons/unique wallet.svg" alt="" class="img-plus mr-3" href="">
                                         </button>
                                         
-                                        <div class="text-center mt-4">
+                                        <div class="text-center my-3">
+                                            <p>Sell: 554/USD</p>
+                                        </div>
+
+                                        <div class="text-center mt-4 font-8">
                                             <p>You can always send Ethereum to this address and get paid directly to your provided bank details.</p>
                                             <p class="text-danger">Ensure you use a high (priority) sending fee when sending from a reputable platform for fast confirmation.</p>
                                             <p>Payment will be processed after we receive 1 block confirmation of your payment</p>
@@ -184,7 +229,7 @@
                                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                                     <div class="text-center">
                                         <p>Receiving Address</p>
-                                        <div class="copyText" id="walletAddress3">
+                                        <div class="copyText font-12" id="walletAddress3">
                                             TTbYz3pucFBQA1tYhV8DMvqt5yr7MwMrwR
                                         </div>
                                     </div>
@@ -196,18 +241,19 @@
                                             <img src="./assets/icons/unique wallet.svg" alt="" class="img-plus mr-3" href="">
                                         </button>
                                         
-                                        <div class="text-center mt-4">
+                                        <div class="text-center my-3">
+                                            <p>Sell: 554/USD</p>
+                                        </div>
+                                        <div class="text-center mt-4 font-8">
                                             <p>You can always send Tether to this address and get paid directly to your provided bank details.</p>
                                             <p class="text-danger">Ensure you use a high (priority) sending fee when sending from a reputable platform for fast confirmation.</p>
                                             <p>Payment will be processed after we receive 1 block confirmation of your payment</p>
-                                            <button class="btn btn-danger mb-3" type="button">
+                                            <button class="btn btn-danger mb-3 font-10" type="button">
                                                 Confirm Transactions
                                             </button>
                                         </div>
                                     </div>
-
-                                   
-
+                                    
                                     <div class="modal fade" id="usdtAddressModal" tabindex="-1" role="dialog" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                           <div class="modal-content">
@@ -231,351 +277,738 @@
                         </article>
                     </section>
 
-                    <div class="container -fluid">
-                        <div class="row mt-4">
-                            <div class="col-md-12">
-                                <div>
-                                    <table class="table table-border">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex flex-row">
-                                                        <div class="d-flex flex-row justify-content-center align-items-center orange-color square round-corner-small light-orange-bg-color font-14">
-                                                            <i class="fas fa-long-arrow-alt-up"></i>
-                                                        </div>
-                                                        <div class="d-flex flex-column ps-2 mx-2 my-1">
-                                                            <span class="font-11 weight-800 purple-color-2"> 0.002810982 BTC </span>
-                                                            <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex flex-column align-items-end">
-                                                        <span class=" font-11 weight-700 success">Completed</span>
-                                                        <span class="text-end font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex flex-row ">
-                                                        <div class="d-flex flex-row justify-content-center align-items-center square round-corner-small light-purple-bg-color purple-color-2 font-14 ">
-                                                            <i class="fas fa-long-arrow-alt-up"></i>
-                                                        </div>
-                                                        <div class="d-flex flex-column ps-2 mx-2">
-                                                            <span class="font-14 weight-700 purple-color-2">0.98125 USDT</span>
-                                                            <span class="font-10 weight-400 purple-color-2 ">$4.59 - NGN 2,403.00</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex flex-column align-items-end ">
-                                                        <span class="font-16 weight-700 success">Completed</span>
-                                                        <span class="text-end font-10 weight-400 purple-color-2">Thu, 16th June 2021</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex flex-row ">
-                                                        <div class="d-flex flex-row justify-content-center align-items-center square round-corner-small light-orange-bg-color orange-color font-14 ">
-                                                            <i class="fas fa-long-arrow-alt-up "></i>
-                                                        </div>
-                                                        <div class="d-flex flex-column ps-2 mx-2">
-                                                            <span class="font-14 weight-700 purple-color-2 ">0.6541 ETH</span>
-                                                            <span class="font-10 weight-400 purple-color-2 ">$10.69 - NGN 3,871.50</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex flex-column align-items-end ">
-                                                        <span class="font-16 weight-700 orange-color pending">Pending</span>
-                                                        <span class="text-end font-10 weight-400 purple-color-2">Thu, 16th June 2021</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                    <!-- Transactions Section -->
+                    <div class="row my-5">
+                        <div class="col-sm">
+                            <p class="text-center weight-600 font-16 my-4">All Transactions</p>
+                            <ul class="nav nav-tabs nav-justified my-4 font-12">
+                                <li class="nav-item">
+                                    <a href="#all" class="nav-link active" role="tab" data-toggle="tab">ALL</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#btc" class="nav-link" role="tab" data-toggle="tab">BTC</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#eth" class="nav-link" role="tab" data-toggle="tab">ETH</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#usdt" class="nav-link" role="tab" data-toggle="tab">USDT</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content my-5">
+                                <!--Start: Tab for all transactions -->
+                                <div role="tabpanel" class="tab-pane fade show active" id="all">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <table class="table table-borderless table-responsive" id="transactionsTable1">
+                                                <thead>
+                                                    <tr class="font-12 text-center">
+                                                        <td><b>#</b></td>
+                                                        <td>Amount Traded</td>
+                                                        <td>Amount(in $)</td>
+                                                        <td>Transaction Hash</td>
+                                                        <td>Status</td>
+                                                        <td>Timestamp</td>
+                                                        <td>Confirmations</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="text-center">
+                                                        <td class="mb-1 first-row">
+                                                            <div class="first-child d-flex flex-column justify-content-center align-items-center ps-2 mx-4 orange-color square round-corner-small light-orange-bg-color font-14">
+                                                                <h6 class="text-center my-2">1</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 BTC </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">41a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                    </tr>
+
+                                                    <tr class="text-center">
+                                                        <td class="mb-4">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center square round-corner-small light-purple-bg-color purple-color-2 ps-2 mx-4  font-14">
+                                                                <h6 class="text-center my-2 first-child">2</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2 second-child"> 0.002810982 USDT </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1 third-child"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"><a href="https://www.blockchain.com/btc/address/17HiPKjnR14rxcwcuhM2NT5PNFMyXLDtfQ">26a4256783ac24e....</a></span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="text-center">
+                                                        <td class="mb-4">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center ps-2 mx-4 orange-color square round-corner-small light-orange-bg-color font-14">
+                                                                <h6 class="text-center my-2">3</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 ETH </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">26a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                    </tr>
+                                                    
+                                                    <tr class="text-center">
+                                                        <td class="mb-4">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center square round-corner-small light-purple-bg-color purple-color-2 ps-2 mx-4  font-14">
+                                                                <h6 class="text-center my-2">4</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 BTC </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">41a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 failed my-1">Failed</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>0</td>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End Tab for all transactions -->
+
+                                <!--Start: Tab for BTC transactions -->
+                                <div role="tabpanel" class="tab-pane fade" id="btc">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <table class="table table-borderless table-responsive" id="transactionsTable2">
+                                                <thead>
+                                                    <tr class="font-12 text-center">
+                                                        <td><b>#</b></td>
+                                                        <td>Amount Traded</td>
+                                                        <td>Amount(in $)</td>
+                                                        <td>Transaction Hash</td>
+                                                        <td>Status</td>
+                                                        <td>Timestamp</td>
+                                                        <td>Confirmations</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="text-center">
+                                                        <td class="mb-1">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center ps-2 mx-4 orange-color square round-corner-small light-orange-bg-color font-14">
+                                                                <h6 class="text-center my-2">1</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 BTC </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">41a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                    </tr>
+
+                                                    <tr class="text-center">
+                                                        <td class="mb-4">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center square round-corner-small light-purple-bg-color purple-color-2 ps-2 mx-4  font-14">
+                                                                <h6 class="text-center my-2">2</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 BTC </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">26a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="text-center">
+                                                        <td class="mb-4">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center ps-2 mx-4 orange-color square round-corner-small light-orange-bg-color font-14">
+                                                                <h6 class="text-center my-2">3</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 BTC </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">26a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                    </tr>
+                                                    
+                                                    <tr class="text-center">
+                                                        <td class="mb-4">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center square round-corner-small light-purple-bg-color purple-color-2 ps-2 mx-4  font-14">
+                                                                <h6 class="text-center my-2">4</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 BTC </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">41a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End: Tab for BTC transactions -->
+
+                                <!--Start: Tab for ETH transactions -->
+                                <div role="tabpanel" class="tab-pane fade" id="eth">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <table class="table table-borderless table-responsive" id="transactionsTable3">
+                                                <thead>
+                                                    <tr class="font-12 text-center">
+                                                        <td><b>#</b></td>
+                                                        <td>Amount Traded</td>
+                                                        <td>Amount(in $)</td>
+                                                        <td>Transaction Hash</td>
+                                                        <td>Status</td>
+                                                        <td>Timestamp</td>
+                                                        <td>Confirmations</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="text-center">
+                                                        <td class="mb-1">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center ps-2 mx-4 orange-color square round-corner-small light-orange-bg-color font-14">
+                                                                <h6 class="text-center my-2">1</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 ETH </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">41a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                    </tr>
+
+                                                    <tr class="text-center">
+                                                        <td class="mb-4">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center square round-corner-small light-purple-bg-color purple-color-2 ps-2 mx-4  font-14">
+                                                                <h6 class="text-center my-2">2</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 ETH </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">26a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="text-center">
+                                                        <td class="mb-4">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center ps-2 mx-4 orange-color square round-corner-small light-orange-bg-color font-14">
+                                                                <h6 class="text-center my-2">3</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 ETH </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">26a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                    </tr>
+                                                    
+                                                    <tr class="text-center">
+                                                        <td class="mb-4">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center square round-corner-small light-purple-bg-color purple-color-2 ps-2 mx-4  font-14">
+                                                                <h6 class="text-center my-2">4</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 ETH </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">41a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End: Tab for ETH transactions -->
+
+                                <!--Start: Tab for USDT transactions -->
+                                <div role="tabpanel" class="tab-pane fade" id="usdt">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <table class="table table-borderless table-responsive" id="transactionsTable4">
+                                                <thead>
+                                                    <tr class="font-12 text-center">
+                                                        <td><b>#</b></td>
+                                                        <td>Amount Traded</td>
+                                                        <td>Amount(in $)</td>
+                                                        <td>Transaction Hash</td>
+                                                        <td>Status</td>
+                                                        <td>Timestamp</td>
+                                                        <td>Confirmations</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="text-center">
+                                                        <td class="mb-1">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center ps-2 mx-4 orange-color square round-corner-small light-orange-bg-color font-14">
+                                                                <h6 class="text-center my-2">1</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 USDT </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">41a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                    </tr>
+
+                                                    <tr class="text-center">
+                                                        <td class="mb-4">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center square round-corner-small light-purple-bg-color purple-color-2 ps-2 mx-4  font-14">
+                                                                <h6 class="text-center my-2">2</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 USDT </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">26a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="text-center">
+                                                        <td class="mb-4">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center ps-2 mx-4 orange-color square round-corner-small light-orange-bg-color font-14">
+                                                                <h6 class="text-center my-2">3</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 USDT </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">26a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                    </tr>
+                                                    
+                                                    <tr class="text-center">
+                                                        <td class="mb-4">
+                                                            <div class="d-flex flex-column justify-content-center align-items-center square round-corner-small light-purple-bg-color purple-color-2 ps-2 mx-4  font-14">
+                                                                <h6 class="text-center my-2">4</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column my-1 text-center">
+                                                                <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 USDT </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-10 weight-400 purple-color-2 my-1">41a4256783ac24e.... </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column ps-2 mx-4">
+                                                                <span class="font-11 weight-700 success my-1">Completed </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column align-items-center">
+                                                                <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End: Tab for ETH transactions -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Response for table data -->
+                    <div class="modal fade" id="transactionModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="border: none;">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                <div class="modal-body text-center">
+                                    <div class="row dataTable">
+                                        <div class="col-md-12">
+                                            <label for="">Id</label>
+                                            <!-- <span><input type="text" class="form-control" maxlength="3" id="transactionId" name="transactionId"></span> -->
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row dataTable">
+                                        <div class="col-md-12">
+                                            <label for="">Status</label>
+                                            <!-- <input type="text" class="form-control" maxlength="50" id="amountUsd" name="amountUsd"> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="row dataTable">
+                                        <div class="col-md-12">
+                                            <label for="">Amount Traded:</label>
+                                            <!-- <span><input type="text" class="form-control" maxlength="50" id="amountTraded" name="amountTraded"></span> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="row dataTable">
+                                        <div class="col-md-12">
+                                            <label for="">Amount (in $):</label>
+                                            <!-- <input type="text" class="form-control" maxlength="50" id="amountUsd" name="amountUsd"> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="row dataTable">
+                                        <div class="col-md-12">
+                                            <label for="">Timestamp</label>
+                                            <!-- <input type="text" class="form-control" maxlength="50" id="amountUsd" name="amountUsd"> -->
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Tabs for transactions -->
-                    <div class="row m-5">
-                            <div class="col-sm">
-                                <p class="text-center weight-600 font-16">All Transactions</p>
-                                <ul class="nav nav-tabs nav-justified">
-                                    <li class="nav-item">
-                                        <a href="#all" class="nav-link active" role="tab" data-toggle="tab">ALL</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#btc" class="nav-link" role="tab" data-toggle="tab">BTC</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#eth" class="nav-link" role="tab" data-toggle="tab">ETH</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#usdt" class="nav-link" role="tab" data-toggle="tab">USDT</a>
-                                    </li>
-                                </ul>
-
-                                <br>
-
-                                <div class="tab-content">
-                                    <!-- Tab for all transactions -->
-                                    <div role="tabpanel" class="tab-pane fade" id="all">
-                                        <div class="transactions-list">
-                                            
-                                            <div class="list-header" >
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234 <span> BTC </span></h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                        
-                                                <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="success"><b>Completed</b></p>
-                                                            <h6>Wed, 16th June, 2021</h6>
-                                                        </div>
-                                                </div>
-                                            </div>
-                        
-                                            <div class="list-header">
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>BTC</span></h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                                                <div class="right-bar">
-                                                    <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="success"><b>Completed</b></p>
-                                                            <h6>Wed, 2nd June, 2021</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                        
-                        
-                                            <div class="list-header">
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>ETH</span></h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                                                <div class="right-bar">
-                                                    <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="success"><b>Completed</b></p>
-                                                            <h6>Wed, 2nd June, 2021</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                        
-                                            <div class="list-header">
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>ETH</span> </h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                                                <div class="right-bar">
-                                                    <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="failed"><b>Failed</b></p>
-                                                            <h6>Wed, 16th May, 2021</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <br>
-
-                                            <p class="text-center"></p>
-                                        </div> <!-- End of all transactions -->
-                                    </div> <!-- End of all transactions -->
-                                    
-                                    <!-- Tab for btc transactions -->
-                                    <div role="tabpanel" class="tab-pane fade show active" id="btc">
-                                        <div class="transactions-list">
-                                            <div class="list-header">
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>BTC</span></h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                        
-                                                <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="success"><b>Completed</b></p>
-                                                            <h6>Wed, 16th June, 2021</h6>
-                                                        </div>
-                                                </div>
-                                            </div>
-                        
-                                            <div class="list-header">
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>BTC</span></h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                                                <div class="right-bar">
-                                                    <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="success"><b>Completed</b></p>
-                                                            <h6>Wed, 2nd June, 2021</h6>
-                                                        </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                        
-                                            <div class="list-header">
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>BTC</span> </h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                                                <div class="right-bar">
-                                                    <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="failed"><b>Failed</b></p>
-                                                            <h6>Wed, 16th May, 2021</h6>
-                                                        </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <p class="text-center"></p>
-                                        </div>
-                                    </div> <!-- End of btc transactions -->
-                                    
-                                    <!-- Tab for eth transactions -->
-                                    <div role="tabpanel" class="tab-pane fade" id="eth">
-                                        <div class="transactions-list">
-                                            <div class="list-header">
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>ETH<span></h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                        
-                                                <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="success"><b>Completed</b></p>
-                                                            <h6>Wed, 16th June, 2021</h6>
-                                                        </div>
-                                                </div>
-                                            </div>
-                        
-                                            <div class="list-header">
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>ETH</span></h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                                                <div class="right-bar">
-                                                    <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="success"><b>Completed</b></p>
-                                                            <h6>Wed, 2nd June, 2021</h6>
-                                                        </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                        
-                                            <div class="list-header">
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>ETH</span> </h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                                                <div class="right-bar">
-                                                    <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="failed"><b>Failed</b></p>
-                                                            <h6>Wed, 16th May, 2021</h6>
-                                                        </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <p class="text-center"></p>
-                                        </div> 
-                                    </div> <!-- End of eth transactions -->
-                                
-                                    <!-- Tab for usdt transactions -->
-                                    <div role="tabpanel" class="tab-pane fade" id="usdt">
-                                        <div class="transactions-list">
-                                            <div class="list-header">
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>USDT</span></h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                        
-                                                <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="success"><b>Completed</b></p>
-                                                            <h6>Wed, 16th June, 2021</h6>
-                                                        </div>
-                                                </div>
-                                            </div>
-                        
-                                            <div class="list-header">
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>USDT</span></h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                                                <div class="right-bar">
-                                                    <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="success"><b>Completed</b></p>
-                                                            <h6>Wed, 2nd June, 2021</h6>
-                                                        </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                        
-                                            <div class="list-header">
-                                                <div class="left-bar">
-                                                    <div  class="transaction-details">
-                                                        <h6 class="priceBtc" id="btcprice">0.0001234<span>USDT</span> </h6>
-                                                        <p class="priceUsd"> $4.59 </p>
-                                                    </div>
-                                                </div>
-                                                <div class="right-bar">
-                                                    <div class="right-bar">
-                                                        <div class="transaction-state">
-                                                            <p class="failed"><b>Failed</b></p>
-                                                            <h6>Wed, 16th May, 2021</h6>
-                                                        </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <p class="text-center"></p>
-                                        </div>
-                                    </div> <!-- End of usdt transactions-->
-                                    
-                                </div>  <!-- End of tab content -->
-                                    
-                            </div> <!-- End of col-sm-8 -->
-                                    
-                    </div> <!-- End of row -->
 
                     <!-- Tab Menu -->
                     <div class="tab-nav-container">
@@ -589,7 +1022,7 @@
                             <p>Transactions</p>
                         </div>
                 
-                        <div class="tab active">
+                        <div class="tab">
                             <img src="./assets/icons/Settings.svg" alt="settings_icon" class="img-aside">
                             <p>Settings</p>
                         </div>
@@ -605,22 +1038,83 @@
     </main>
 
     
-    <script src="tab-bar.js"></script>
+    
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.slim.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/datatables.js"></script> 
+    <script src="tab-bar.js"></script>
     
     <!-- Side Navigation -->
 
     
+    <script>
+        $(document).ready(function (){
+            var transactionTable = $("#transactionsTable1").DataTable({
+                "ordering": false,
+                "info":true,
+                "lengthChange": false
+            });
+            $("#transactionsTable1").on("click", "tr", function() {
+                var name = $('.first-row .first-child > h6', this).eq().text();
+                $("#transactionId").val(transactionTable.row(this).data()[0]);
+                $("#amountTraded").val(transactionTable.row(this).data()[1]);
+                $("#amountUsd").val(transactionTable.row(this).data()[2]);
+                $("#transactionModal").modal("show");
+            })
+        })
 
+        $(document).ready(function (){
+            var transactionTable = $("#transactionsTable2").DataTable({
+                "ordering": false,
+                "info":true,
+                "lengthChange": false
+            });
+            $("#transactionsTable2").on("click", "tr", function() {
+                var name = $('.first-row .first-child > h6', this).eq().text();
+                $("#transactionId").val(transactionTable.row(this).data()[0]);
+                $("#amountTraded").val(transactionTable.row(this).data()[1]);
+                $("#amountUsd").val(transactionTable.row(this).data()[2]);
+                $("#transactionModal").modal("show");
+            })
+        })
+        
+        $(document).ready(function (){
+            var transactionTable = $("#transactionsTable3").DataTable({
+                "ordering": false,
+                "info":true,
+                "lengthChange": false
+            });
+            $("#transactionsTable3").on("click", "tr", function() {
+                var name = $('.first-row .first-child > h6', this).eq().text();
+                $("#transactionId").val(transactionTable.row(this).data()[0]);
+                $("#amountTraded").val(transactionTable.row(this).data()[1]);
+                $("#amountUsd").val(transactionTable.row(this).data()[2]);
+                $("#transactionModal").modal("show");
+            })
+        })
+
+        $(document).ready(function (){
+            var transactionTable = $("#transactionsTable4").DataTable({
+                "ordering": false,
+                "info":true,
+                "lengthChange": false
+            });
+            $("#transactionsTable4").on("click", "tr", function() {
+                var name = $('.first-row .first-child > h6', this).eq().text();
+                $("#transactionId").val(transactionTable.row(this).data()[0]);
+                $("#amountTraded").val(transactionTable.row(this).data()[1]);
+                $("#amountUsd").val(transactionTable.row(this).data()[2]);
+                $("#transactionModal").modal("show");
+            })
+        })
+    </script>
     <script>
         $(function() {
             'use strict';
-
             $('.js-menu-toggle').click(function(e) {
 
                 var $this = $(this);
@@ -636,7 +1130,6 @@
                 }
 
                 e.preventDefault();
-
             });
 
             // click outisde offcanvas
