@@ -88,6 +88,7 @@ a:hover{
 #settingsTab .nav-link.active,.show > .nav-link {
     background-color: var(--custom-color-dark);
 }
+
 .aboutTab .nav-link.active,.show > .nav-link:hover{
     border-radius:5px;
 }
@@ -182,8 +183,19 @@ a:hover{
     .carousel-inner .carousel-item > div {
         display: block;
     }
+
     .carousel-inner .carousel-item > :first-child {
         display: block;
+    }
+    #settingsPage .nav-pills .nav-link{
+        font-size: 13px;
+    }
+    #settingsPage #pillsTabcontent label{
+        font-size: 13px;
+    }
+
+    #settingsPage #pillsTabcontent input{
+        font-size: 10px;
     }
 }
 
@@ -261,32 +273,13 @@ a:hover{
   .form-group .forget-password a{
       text-decoration:none;
   }
-/* SMARTPHONES ORIENTATION */
-@media screen and (max-width:767px){
-    .card{
-        position:relative;
-        right:40px;
-        margin-bottom: 70px;
-        
-    }
-}
-/* */
-/* Tablet ORIENTATION */
-@media screen and (min-width:768px) and (max-width:1023px){
-    
-}
 
-@media screen and (min-width:1023px){
-    
-}
-@media screen and (min-width:576px){
-    
-
+@media screen and (min-width:576px) {
     .form-group .forget-password{
-        position: relative;
-        right:55px;
+    position: relative;
+    right:55px;
 
-      }
+    }
 }
 /* Transactions Page */
 .all-transactions{
@@ -397,4 +390,16 @@ a:hover{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+/* SMARTPHONES ORIENTATION */
+@media screen and (max-width:767px){
+    .card{
+        position:relative;
+        right:40px;
+        margin-bottom: 70px;
+        
+    }
+    main .user-dashboard{
+        
+    }
 }
