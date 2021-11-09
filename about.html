@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 
      <!-- FONT AWESOME CDN Links -->
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -60,9 +61,9 @@
         <div class="row">
             <div class="col-3">
                 <div class="nav flex-column nav-pills aboutTab" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active bg-custom" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-know" role="tab" aria-controls="v-pills-know" aria-selected="true">Get To Know Us</a>
-                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-vision" role="tab" aria-controls="v-pills-vision" aria-selected="false">Vision</a>
-                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-values" role="tab" aria-controls="v-pills-values" aria-selected="false">Our Values </a>
+                    <a class="nav-link active bg-custom font-6" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-know" role="tab" aria-controls="v-pills-know" aria-selected="true">Get To Know Us</a>
+                    <a class="nav-link font-6" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-vision" role="tab" aria-controls="v-pills-vision" aria-selected="false">Vision</a>
+                    <a class="nav-link font-6" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-values" role="tab" aria-controls="v-pills-values" aria-selected="false">Our Values </a>
                 </div>
             </div>
             <div class="col-9">
@@ -99,11 +100,14 @@
         </div>
     </div>
     
+    <script>
+        $('#v-pills-tab a').on('click', function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 </body>
-<script>
-    $('#v-pills-tab a').on('click', function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-    })
-</script>
 </html>
