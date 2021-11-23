@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Links -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/toggle.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/tab-bar.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/datatables.min.css">
+    
+
+    <!-- FONT AWESOME CDN Links -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+
+    <title>Admin | Users</title>
+    <style>
+        .fas .fa-edit{
+            color:red;
+        }
+        .card:hover{
+            color:#000
+        }
+        tbody td:nth-child(1){
+            position: relative;
+            bottom:7px;
+        }
+        td:nth-child(1) {
+            width: 2%;
+        }
+        td:nth-child(2) {
+            width: 15%;
+        }
+        table{
+            position: relative;
+            right:10px;
+        }
+        @media (max-width: 576px) {
+            table{
+                width:30%;
+                position: relative;
+                right:10px;
+            }
+
+        }
+        table.dataTable thead th {
+            border-bottom: none;
+        }
+        
+        table.dataTable tfoot th {
+            border-top: none;
+            border-bottom: 1px solid  #111;
+        }
+        table.dataTables_wrapper .dataTables_filter input[type="search"] {
+            font-size:8px;
+        }
+        [type=search] {
+            outline-offset: none;
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <div class="toggle">
+            <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+                  <span></span>
+                </a>
+          </div>
+          <div class="side-inner">
+            <div class="logo-wrap">
+                <div class="logo" onload="getAvatar()">
+                  <span class="text-center mx-3" id="avatarFirst">N</span>
+                </div>
+                <span class="logo-text" id="avatarText">Njoku</span>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li class="my-2"><a href="./dashboard.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="../assets/icons/Dashboard1.svg" alt="dashboard_icon" class="img-aside"></span><span class="menu-text">Dashboard</span></a></li>
+                    <li class="my-2"><a href="./users.html" class="d-flex align-items-center">
+                        <span class="wrap-icon mr-3"><i class="fas fa-user"></i></span>
+                        <span class="menu-text">Users</span></a>
+                    </li>
+                    <li class="my-2"><a href="./vendors.html" class="d-flex align-items-center">
+                        <span class="wrap-icon  mr-3"><i class="fas fa-user-tie"></i></span><span class="menu-text">Vendors</span></a></li>
+                    <li class="my-2 active"><a href="./transactions.html" class="d-flex align-items-center"><span class="wrap-icon  mr-3"><i class="fas fa-chart-bar"></i></span><span class="menu-text">Transactions</span></a></li>
+                    <li class="my-2"><a href="./emails.html" class="d-flex align-items-center"><span class="wrap-icon  mr-3"><i class="fas fa-at"></i></span><span class="menu-text">Emails</span></a></li>
+                    <li class="my-2"><a href="./commission.html" class="d-flex align-items-center"><span class="wrap-icon  mr-3"><i class="fas fa-edit"></i></span><span class="menu-text">Set Rates & Commission</span></a></li>
+                    <li><a href="./login.html" class="d-flex align-items-center"><span class="wrap-icon logout mr-3"><img src="../assets/icons/logout.svg" class="img-aside logout failed"></span>
+                        <span class="menu-text font-20 failed">Logout</span></a>
+                    </li>
+                </ul>
+
+            </div>
+          </div> 
+    </aside>
+
+    
+    <main>
+        <div class="row">
+            <div class="col-md">
+                <div class="container dashboard">
+                    <!-- Header -->
+                    <div class="row header-menu">
+                        <div class="col-2 mx-4 my-2">
+                            <h5 class="my-4 ml-5">Transactions</h4>
+                        </div>
+                        <div class="ml-auto my-2">
+                            <a href="">
+                                <i class="far fa-bell px-1 m-3 notification"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row my-2">
+                <div class="col-md-12">
+                    <div>
+                        <table class="table table-borderless table-responsive" id="transactionsTable1">
+                            <thead>
+                                <tr class="font-12 text-center">
+                                    <td><b>#</b></td>
+                                    <td>Amount Traded</td>
+                                    <td>Amount(in $)</td>
+                                    <td>Transaction Hash</td>
+                                    <td>Status</td>
+                                    <td>Timestamp</td>
+                                    <td>Confirmations</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td class="mb-1 first-row">
+                                        <div class="first-child d-flex flex-column justify-content-center align-items-center ps-2 mx-4 orange-color square round-corner-small light-orange-bg-color font-14">
+                                            <h6 class="text-center my-2">1</h6>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column my-1 text-center">
+                                            <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 BTC </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column ps-2 mx-4">
+                                            <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                        </div>
+                                        
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column ps-2 mx-4">
+                                            <span class="font-10 weight-400 purple-color-2 my-1">41a4256783ac24e.... </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column ps-2 mx-4">
+                                            <span class="font-11 weight-700 success my-1">Completed </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                </tr>
+    
+                                <tr class="text-center">
+                                    <td class="mb-4">
+                                        <div class="d-flex flex-column justify-content-center align-items-center square round-corner-small light-purple-bg-color purple-color-2 ps-2 mx-4  font-14">
+                                            <h6 class="text-center my-2 first-child">2</h6>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column my-1 text-center">
+                                            <span class="font-11 weight-800 text-center purple-color-2 second-child"> 0.002810982 USDT </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column ps-2 mx-4">
+                                            <span class="font-10 weight-400 purple-color-2 my-1 third-child"> $103.59 </span>
+                                        </div>
+                                        
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column ps-2 mx-4">
+                                            <span class="font-10 weight-400 purple-color-2 my-1"><a href="https://www.blockchain.com/btc/address/17HiPKjnR14rxcwcuhM2NT5PNFMyXLDtfQ">26a4256783ac24e....</a></span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column ps-2 mx-4">
+                                            <span class="font-11 weight-700 success my-1">Completed </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    </td>
+                                </tr>
+    
+                                <tr class="text-center">
+                                    <td class="mb-4">
+                                        <div class="d-flex flex-column justify-content-center align-items-center ps-2 mx-4 orange-color square round-corner-small light-orange-bg-color font-14">
+                                            <h6 class="text-center my-2">3</h6>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column my-1 text-center">
+                                            <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 ETH </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column ps-2 mx-4">
+                                            <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                        </div>
+                                        
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column ps-2 mx-4">
+                                            <span class="font-10 weight-400 purple-color-2 my-1">26a4256783ac24e.... </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column ps-2 mx-4">
+                                            <span class="font-11 weight-700 success my-1">Completed </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                </tr>
+                                
+                                <tr class="text-center">
+                                    <td class="mb-4">
+                                        <div class="d-flex flex-column justify-content-center align-items-center square round-corner-small light-purple-bg-color purple-color-2 ps-2 mx-4  font-14">
+                                            <h6 class="text-center my-2">4</h6>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column my-1 text-center">
+                                            <span class="font-11 weight-800 text-center purple-color-2"> 0.002810982 BTC </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column ps-2 mx-4">
+                                            <span class="font-10 weight-400 purple-color-2 my-1"> $103.59 </span>
+                                        </div>
+                                        
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column ps-2 mx-4">
+                                            <span class="font-10 weight-400 purple-color-2 my-1">41a4256783ac24e.... </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column ps-2 mx-4">
+                                            <span class="font-11 weight-700 failed my-1">Failed</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <span class="text-center font-9 weight-400 purple-color-2 my-1">Wed, 16th June 2021</span>
+                                        </div>
+                                    </td>
+                                    <td>0</td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="../tab-bar.js"></script> 
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.slim.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/datatables.js"></script>
+    
+    <!-- Side Navigation -->
+    <script>
+        $(function() {
+            'use strict';
+
+            $('.js-menu-toggle').click(function(e) {
+
+                var $this = $(this);
+
+                
+
+                if ( $('body').hasClass('show-sidebar') ) {
+                    $('body').removeClass('show-sidebar');
+                    $this.removeClass('active');
+                } else {
+                    $('body').addClass('show-sidebar');	
+                    $this.addClass('active');
+                }
+
+                e.preventDefault();
+
+            });
+
+            // click outisde offcanvas
+            $(document).mouseup(function(e) {
+            var container = $(".sidebar");
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                if ( $('body').hasClass('show-sidebar') ) {
+                        $('body').removeClass('show-sidebar');
+                        $('body').find('.js-menu-toggle').removeClass('active');
+                    }
+                }}); 
+            });
+    </script>
+    <script>
+        $(document).ready(function (){
+            var transactionTable = $("#transactionsTable1").DataTable({
+                "ordering": false,
+                "info":true,
+                "lengthChange": false,
+                "language": {
+                    "search": "",
+                    "searchPlaceholder": "Search ...",
+                }
+            })
+        })
+    </script>
+</body>
+</html>

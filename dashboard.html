@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
     <title>My Dashboard | Bitoshi</title>
+    <style>
+        
+    </style>
 </head>
 <body>
     <aside>
@@ -41,14 +44,10 @@
                     <li class="my-3"><a href="./transactions.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="./assets/icons/Transactions1.svg" alt="transaction_icon" class="img-aside"></span><span class="menu-text">Transactions</span></a></li>
                     <li class="my-3"><a href="./settings.html" class="d-flex align-items-center"><span class="wrap-icon  mr-3"><img src="./assets/icons/Settings.svg" alt="settings_icon" class="img-aside"></span><span class="menu-text">Settings</span></a></li>
                     <li class="my-3"><a href="./earn.html" class="d-flex align-items-center"><span class="wrap-icon  mr-3"><img src="./assets/icons/Walletb ype A.svg" alt="settings_icon" class="img-aside"></span><span class="menu-text">Earn</span></a></li>
-                    <li class="my-5"><a href="./index.html" class="d-flex align-items-center"><span class="wrap-icon logout mr-3"><img src="./assets/icons/logout.svg" alt="logout_icon" class="img-aside logout failed"></span>
+                    <li><a href="./index.html" class="d-flex align-items-center"><span class="wrap-icon logout mr-3"><img src="./assets/icons/logout.svg" alt="logout_icon" class="img-aside logout failed"></span>
                         <span class="menu-text font-20 failed">Logout</span></a>
                     </li>
                 </ul>
-            </div>
-
-            <div>
-                
             </div>
           </div> 
     </aside>
@@ -115,10 +114,13 @@
                                         <a href="./earn.html">
                                             <div class="col px-3 py-4 d-flex flex-column bg-with-light-shadow round-corner align-items-left mt-4 h-120">
                                                 <h5 ><b>Refer A Friend</b></h5>
-                                                <p class="font-12 mb-5">You and your friends get a #1000 cash when they sign up and sell with your referral link.</p>
+                                                <p class="font-12 mb-5">You and your friends get a #1000 cash when they sign up and sell with 
+                                                    your referral link.
+                                                </p>
                                             </div>
                                         </a>
                                     </div>
+
                                     <div class="col-md-3 my-3">
                                         <div class="pt-1">
                                             <table class="table table-borderless">
@@ -306,7 +308,7 @@
         <!-- Chat Modal -->
         <button type="button chatmodal" class="btn custom-bg-normal mx-5 my-4" data-toggle="modal" data-target="#chatpage" id="chatButton">
             <a href="" data-toggle="tooltip" data-placement="left" title="chat with Customer Care"></a>
-            <i class="fas fa-comment-dots"></i>
+            <img src="./assets/icons/Chatbot.svg" alt="chat" class="img-aside">
         </button>
 
         <div class="modal chat" id="chatpage" style="margin-top: 0;" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false">
@@ -376,6 +378,7 @@
                         </div>
                     </div>
                 </div>
+                
         <!-- Tab Menu -->
         <div class="tab-nav-container">
             <div class="tab active">
@@ -387,7 +390,7 @@
                 <img src="./assets/icons/Transactions1.svg" alt="transaction_icon" class="img-aside">
                 <p>Transactions</p>
             </div>
-    
+
             <div class="tab">
                 <img src="./assets/icons/Settings.svg" alt="settings_icon" class="img-aside">
                 <p>Settings</p>
@@ -399,8 +402,7 @@
             </div>
         </div>
     </main>
-    <script src="tab-bar.js"></script>
-    
+    <script src="tab-bar.js"></script> 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.slim.js"></script>
     <script src="assets/js/popper.min.js"></script>
@@ -460,12 +462,12 @@
     </script>
     
     <script>
-        const chk = document.getElementById('chk');
+        // const chk = document.getElementById('chk');
         
-        chk.addEventListener('change', () => {
-            document.body.classList.toggle('dark');
+        // chk.addEventListener('change', () => {
+        //     document.body.classList.toggle('dark');
             
-        });
+        // });
 
 
         // if(document.body.classList.toggle(('dark')) == true ? "Ebaled" : "Disabled"){

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Links -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/toggle.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/tab-bar.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/datatables.min.css">
+    
+
+    <!-- FONT AWESOME CDN Links -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+
+    <title>Admin Dashboard | Bitoshi</title>
+    <style>
+        .fas .fa-edit{
+            color:red;
+        }
+        .card-header{
+            background-color: #ffffff;
+        }
+        tbody td:nth-child(1){
+            position: relative;
+            bottom:7px;
+        }
+        td:nth-child(1) {
+            width: 2%;
+        }
+        td:nth-child(2) {
+            width: 15%;
+        }
+        table{
+            position: relative;
+            right:10px;
+        }
+        @media (max-width: 576px) {
+            table{
+                width:30%;
+                position: relative;
+                right:10px;
+            }
+
+        }
+        table.dataTable thead th {
+            border-bottom: none;
+        }
+        
+        table.dataTable tfoot th {
+            border-top: none;
+            border-bottom: 1px solid  #111;
+        }
+        table.dataTables_wrapper .dataTables_filter input[type="search"] {
+            font-size:8px;
+        }
+        [type=search] {
+            outline-offset: none;
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <div class="toggle">
+            <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+                  <span></span>
+                </a>
+          </div>
+          <div class="side-inner">
+            <div class="logo-wrap">
+                <div class="logo" onload="getAvatar()">
+                  <span class="text-center mx-3" id="avatarFirst">N</span>
+                </div>
+                <span class="logo-text" id="avatarText">Njoku</span>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li class="my-2 active"><a href="../vendor/dashboard.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="../assets/icons/Dashboard1.svg" alt="dashboard_icon" class="img-aside"></span><span class="menu-text">Dashboard</span></a></li>
+                    <li class="my-2"><a href="../vendor/transactions.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="../assets/icons/Transactions1.svg" alt="dashboard_icon" class="img-aside"></i></span><span class="menu-text">Transactions</span></a></li>
+                    <li class="my-2"><a href="../vendor/settings.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><i class="fas fa-cog"></i></span><span class="menu-text">Settings</span></a></li>
+                    <li><a href="./login.html" class="d-flex align-items-center"><span class="wrap-icon logout mr-3"><img src="../assets/icons/logout.svg" class="img-aside logout failed"></span>
+                        <span class="menu-text font-20 failed">Logout</span></a>
+                    </li>
+                </ul>
+            </div>
+          </div> 
+    </aside>
+
+    <main>
+        <div class="row">
+            <div class="col-md">
+                <div class="container dashboard">
+                    <!-- Header -->
+                    <div class="row header-menu">
+                        <div class="col-2 mx-4 my-2">
+                            <h5 class="my-4 ml-5">Vendor Dashboard</h4>
+                        </div>
+                        <div class="ml-auto my-2">
+                            <a href="">
+                                <i class="far fa-bell px-1 m-3 notification"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row my-5">
+                <div class="col-md-12">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="text-dark bg-light weight-800">Confirm Transactions</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../tab-bar.js"></script> 
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.slim.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/datatables.js"></script>
+    
+    <!-- Side Navigation -->
+    <script>
+        $(function() {
+            'use strict';
+
+            $('.js-menu-toggle').click(function(e) {
+
+                var $this = $(this);
+
+                
+
+                if ( $('body').hasClass('show-sidebar') ) {
+                    $('body').removeClass('show-sidebar');
+                    $this.removeClass('active');
+                } else {
+                    $('body').addClass('show-sidebar');	
+                    $this.addClass('active');
+                }
+
+                e.preventDefault();
+
+            });
+
+            // click outisde offcanvas
+            $(document).mouseup(function(e) {
+            var container = $(".sidebar");
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                if ( $('body').hasClass('show-sidebar') ) {
+                        $('body').removeClass('show-sidebar');
+                        $('body').find('.js-menu-toggle').removeClass('active');
+                    }
+            }
+            }); 
+
+            
+
+            });
+    </script>
+</body>
+</html>
