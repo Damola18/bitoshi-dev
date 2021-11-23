@@ -6,15 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS Links -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/toggle.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/tab-bar.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/admin.css">
     
+
     <!-- FONT AWESOME CDN Links -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
-    <title> Sign in | Bitoshi</title>
+
+    <title>Bitoshi Admin | Users</title>
     <style>
         .form-control{
             width:80%;
@@ -31,19 +38,19 @@
             .form-group input{
                 font-size:12px;
             }
-        }    
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-white sticky-top">
         <div class="container">
             <a href="/index.html" class="navbar-brand">
-                <img src="./assets/images/Bitoshi-logo.png" alt="bitoshi_logo">
+                <img src="../assets/images/Bitoshi-logo.png" alt="bitoshi_logo">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="navbar" aria-expanded="false" data-toggle="collapse">
                 <span class="toggler-icon">
-                  <img src="assets/icons/hamburger.svg" alt="hamburger_icon">
+                  <img src="../assets/icons/hamburger.svg" alt="hamburger_icon">
                 </span>
             </button>
 
@@ -52,10 +59,9 @@
                 <ul class="navbar-nav ml-auto nav-mb">
                     <li class="nav-item py-2"><a class="nav-link" href="index.html">Home</a>
                     </li>
-                    <li class="nav-item py-2"><a class="nav-link" href="dashboard.html">Portfolio</a></li>
                     <li class="nav-item py-2"><a class="nav-link" href="./login.html">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./register.html" id="signup"> 
-                        <input type="submit" class="btn btn-block" value="Sign up">
+                    <li class="nav-item "><a class="nav-link active" id="signup"> 
+                        <input type="submit" class="btn  btn-block" value="Sign up">
                     </a></li>
                 </ul>
             </div>
@@ -63,6 +69,7 @@
     </nav>
 
     <div class="container mb-5">
+        <div class="d-flex justify-content-center align-items-center py-2"><h5>Sign in to Admin Dashboard</h5></div>
         <form action="" class="login-form" id="login-form">
             <div class="form-box">
                 <h6 id="welcome"><b>Welcome Back !</b></h6>
@@ -89,11 +96,13 @@
             </div>
         </form>
     </div>
+
+    <script src="../tab-bar.js"></script> 
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.slim.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/datatables.js"></script>
     
-    <script src="assets/js/jquery.slim.js"></script>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>

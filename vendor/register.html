@@ -6,32 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS Links -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/toggle.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/tab-bar.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/admin.css">
     
 
     <!-- FONT AWESOME CDN Links -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
-    <title>Get Started | Bitoshi</title>
-    <style>
-        .container .register{
-            margin-top: 50px;
-        }
-        #profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: var(--custom-color-dark);
-            font-size: 35px;
-            color: #fff;
-            text-align: center;
-            line-height: 150px;
-            margin: 0 auto;
-        }
 
+    <title>Vendor register | Bitoshi</title>
+    <style>
         .hideme {
             display: none;
         }
@@ -41,12 +32,15 @@
             margin-left:30px;
         }
         .form-group p{
-                position: relative;
-                right:8px;
-                top:10px;
-                font-size:8px;
-                color:#c4c4c4;
-            }
+            position: relative;
+            right:8px;
+            top:10px;
+            font-size:8px;
+            color:#c4c4c4;
+        }
+        .form-group input{
+            font-size:12px;
+        }
         @media screen and (max-width:576px){
             .form-group label{
                 position: relative;
@@ -58,23 +52,26 @@
                 top:10px;
                 font-size:6px;
             }
-            .form-group input{
-                font-size:12px;
-            }
+            
+        }
+        .fas .fa-edit{
+            color:red;
+        }
+        .card:hover{
+            color:#000
         }
     </style>
 </head>
-
 <body>
     <nav class="navbar navbar-expand-md bg-white sticky-top">
         <div class="container">
             <a href="/index.html" class="navbar-brand">
-                <img src="./assets/images/Bitoshi-logo.png" alt="bitoshi_logo">
+                <img src="../assets/images/Bitoshi-logo.png" alt="bitoshi_logo">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="navbar" aria-expanded="false" data-toggle="collapse">
                 <span class="toggler-icon">
-                  <img src="assets/icons/hamburger.svg" alt="hamburger_icon">
+                  <img src="../assets/icons/hamburger.svg" alt="hamburger_icon">
                 </span>
             </button>
 
@@ -83,7 +80,6 @@
                 <ul class="navbar-nav ml-auto nav-mb">
                     <li class="nav-item py-2"><a class="nav-link" href="index.html">Home</a>
                     </li>
-                    <li class="nav-item py-2"><a class="nav-link" href="dashboard.html">Portfolio</a></li>
                     <li class="nav-item py-2"><a class="nav-link" href="./login.html">Login</a></li>
                     <li class="nav-item "><a class="nav-link active" id="signup"> 
                         <input type="submit" class="btn  btn-block" value="Sign up">
@@ -94,6 +90,7 @@
     </nav>
 
     <div class="container register">
+        <div class="d-flex justify-content-center align-items-center py-2"><h5>Regsiter as an admin</h5></div>
         <form action="" class="reg-form" id="register-form">
             <div class="form-box">
                 <h6 class="my-3" id="welcome"><b>Welcome !</b></h6>
@@ -117,33 +114,22 @@
                 </div>
                 <div class="d-flex justify-content-center">
                     <a href="./confirmemail.html">
-                        <button type="submit" class="btn btn-custom btn-md" id="button">Sign Up</button>
+                        <button type="submit" class="btn btn-custom btn-md" id="button">Sign Up As A Vendor</button>
                     </a>
                 </div>
                 <br>
-                <p id="redirect-footer">Already Have An Account? <b class="redirect-btn"><a href="./login.html">Sign In</b></p>
+                <p id="redirect-footer">Already Have A Vendor? <b class="redirect-btn"><a href="./login.html">Sign In</b></p>
             </div>
         </form>
     </div>
+
+
+    <script src="../tab-bar.js"></script> 
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.slim.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/datatables.js"></script>
     
-    <script src="assets/js/jquery.slim.js"></script>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.validate.min.js"></script>
-    
-    <script src="script.js"></script>
-    <script>
-        $(function getAvatar(){
-            $("#register-form").validate({
-                submitHandler: function getAvatar() {
-                    var initials = $('#username').val().charAt(0);
-                    // var firstname =  $('#fname').val()
-                    // alert(firstname());
-                    $('#profile-image').removeClass('hideme').text(initials);
-                }
-            });
-        })
-    </script>
 </body>
 </html>

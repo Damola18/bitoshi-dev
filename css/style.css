@@ -67,9 +67,6 @@ div:not("landing-text"){
         position: relative;
         bottom:290px;
     }
-
-    
-
 }
 
 .container .hero-text .row{
@@ -225,7 +222,7 @@ div:not("landing-text"){
 }
 .login-form{
     position:relative;
-    top:100px;
+    top: 50px;
 }
 .redirect-btn{
     text-decoration: underline;
@@ -402,7 +399,7 @@ div:not("landing-text"){
         text-align: center;
         position:relative;
         width:var(--form-width);
-        top:30px;
+        top:10px;
         left:30%;
         height:500px;
         border-radius:6px;
@@ -421,7 +418,6 @@ div:not("landing-text"){
         text-align: center;
         position:relative;
         width:var(--form-width);
-        top:00px;
         left:30%;
         height:380px;
         border-radius:6px;
@@ -506,6 +502,10 @@ div:not("landing-text"){
     /* Recent Transactions */
     .priceVar ul{
         display:inline;
+    }
+    .nav-mb{
+        position: relative;
+        left:10px;
     }
 }
 /*  RESET Password*/

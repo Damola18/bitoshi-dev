@@ -1,9 +1,4 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-/* @media (min-width: 1200px) {
-    .container {
-        max-width: 950px;
-    }
-} */
 *{
     font-family: 'Poppins', sans-serif;
 }
@@ -15,11 +10,6 @@
     background: white;
     border-radius: 40px;
 }
-/* Side Navigation */
-/* aside, main {
-    height: 100vh;
-    max-height: 0px; 
-} */
 aside {
     position: fixed;
     width:70px;
@@ -182,7 +172,7 @@ aside .side-inner .nav-menu ul li a:visited {
 }
 aside .side-inner .nav-menu ul li:last-child a {
     position: relative;
-    top:230px;
+    top:210px;
 }
 aside .side-inner .nav-menu ul li:last-child a:hover {
     background: rgba(255, 0, 0, 0.1);
@@ -354,8 +344,6 @@ button:active{
     width: 51px;
     top: 0;
     left: 0;
-    /* background:rgb(90, 89, 89);
-    border:2px; */
     border-radius: 30px;
 }
 .onoffwrapper input.onoff+label::after {
@@ -379,7 +367,7 @@ button:active{
 
 }
 /* Chat Modal */
-/* .chat-modal{
+.chat-modal{
     position:fixed;
     bottom:0;
     right:10px;
@@ -390,7 +378,7 @@ button:active{
         bottom:45px;
         right:4px;
     }
-} */
+}
 button {
     border: none;
     border-radius: 5px;
@@ -594,6 +582,7 @@ button {
 .custom-normal{
     color:#fac07f;
 }
+
 .light{
     color:#9b9694;
 }
@@ -673,11 +662,36 @@ i.notification::after {
     aside {
         visibility:hidden;
     }
-    .container .dashboard{
+    /* .container .dashboard{
         position:relative;
         bottom:80px;
-    }
+    } */
     .tab-nav-container{
         visibility: visible;
     }
+    .container .dashboard .header-menu{
+        position: relative;
+        right:36px;
+    }
+}
+/* Admin Dashboard */
+.admin .card{
+    border: transparent;
+    border-radius: 0.75rem;
+    cursor: pointer;
+}
+.admin .card .card-body:hover{
+    color:#000;
+}
+.user-card{
+    background: rgba(239, 200, 100, 0.6);
+}
+.vendor-card{
+    background: rgba(255, 191, 105, 0.2);
+}
+.transaction-card{
+    background: rgba(203, 243, 240, 0.5);
+}
+.emailList-card{
+    background: rgba(24, 60, 56, 0.2);
 }
