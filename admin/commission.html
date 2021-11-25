@@ -22,6 +22,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
 
     <title>Bitoshi Admin | Users</title>
+    <style>
+        .back{
+            background-color: var(--custom-color-dark);
+            /* background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%); */
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;display: block;
+            background-position: right center; 
+            /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <aside>
@@ -40,7 +59,7 @@
             <div class="nav-menu">
                 <ul>
                     <li class="my-2"><a href="../admin/dashboard.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="../assets/icons/Dashboard1.svg" alt="dashboard_icon" class="img-aside"></span><span class="menu-text">Dashboard</span></a></li>
-                    <li class="my-2"><a href="../admin/uesrs.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><i class="fas fa-user"></i></span><span class="menu-text">Users</span></a></li>
+                    <li class="my-2"><a href="../admin/users.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><i class="fas fa-user"></i></span><span class="menu-text">Users</span></a></li>
                     <li class="my-2"><a href="./vendors.html" class="d-flex align-items-center">
                         <span class="wrap-icon  mr-3"><i class="fas fa-user-tie"></i></span>
                         <span class="menu-text">Vendors</span></a>
@@ -72,9 +91,46 @@
                             </a>
                         </div>
                     </div>
+
+                    <div class="mx-3">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="usd-rate">USD Rate</label>
+                                    <input type="text" class="form-control modified" id="rate"  placeholder="Enter rate">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="firstname">Vendor Commmission</label>
+                                    <input type="text" class="form-control" id="vendor" placeholder="Enter commission"  value="">   
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="firstname">Vendor Commmission</label>
+                                    <input type="text" class="form-control" id="user" placeholder="Enter commission"  value="">   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button class="back">Submit</button>
+                    </div>
+                    
                 </div>
             </div>
         </div>
+
+        
     </main>
 
 
@@ -119,5 +175,12 @@
                 }}); 
             });
     </script>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    
 </body>
 </html>
