@@ -1,5 +1,67 @@
-/* aside */
+/* aside admin logout*/
 aside .side-inner .nav-menu ul li:last-child a {
     position: relative;
-    top:130px;
+    top:0px;
+}
+.fas .fa-edit{
+    color:red;
+}
+.card-header{
+    background-color: #ffffff;
+}
+tbody td:nth-child(1){
+    position: relative;
+    bottom:7px;
+}
+td:nth-child(1) {
+    width: 2%;
+}
+td:nth-child(2) {
+    width: 15%;
+}
+table{
+    position: relative;
+    right:10px;
+}
+@media (max-width: 576px) {
+    table{
+        width:30%;
+        position: relative;
+        right:10px;
+    }
+    aside{
+        visibility: visible;
+    }
+
+}
+table.dataTable thead th {
+    border-bottom: none;
+}
+
+table.dataTable tfoot th {
+    border-top: none;
+    border-bottom: 1px solid  #111;
+}
+table.dataTables_wrapper .dataTables_filter input[type="search"] {
+    font-size:8px;
+}
+[type=search] {
+    outline-offset: none;
+}
+.back{
+    background-color: var(--custom-color-dark);
+    /* background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%); */
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;display: block;
+    background-position: right center; 
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
 }

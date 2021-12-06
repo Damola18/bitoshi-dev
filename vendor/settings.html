@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/dashboard.css">
 
     <!-- FONT AWESOME CDN Links -->
@@ -39,9 +40,9 @@
             </div>
             <div class="nav-menu">
                 <ul>
-                    <li class="my-2 active"><a href="../vendor/dashboard.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="../assets/icons/Dashboard1.svg" alt="dashboard_icon" class="img-aside"></span><span class="menu-text">Dashboard</span></a></li>
+                    <li class="my-2"><a href="../vendor/dashboard.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="../assets/icons/Dashboard1.svg" alt="dashboard_icon" class="img-aside"></span><span class="menu-text">Dashboard</span></a></li>
                     <li class="my-2"><a href="../vendor/transactions.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><img src="../assets/icons/Transactions1.svg" alt="dashboard_icon" class="img-aside"></i></span><span class="menu-text">Transactions</span></a></li>
-                    <li class="my-2"><a href="../vendor/settings.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><i class="fas fa-cog"></i></span><span class="menu-text">Settings</span></a></li>
+                    <li class="my-2 active"><a href="../vendor/settings.html" class="d-flex align-items-center"><span class="wrap-icon mr-3"><i class="fas fa-cog"></i></span><span class="menu-text">Settings</span></a></li>
                     <li><a href="./login.html" class="d-flex align-items-center"><span class="wrap-icon logout mr-3"><img src="../assets/icons/logout.svg" class="img-aside logout failed"></span>
                         <span class="menu-text font-20 failed">Logout</span></a>
                     </li>
@@ -49,6 +50,241 @@
             </div>
           </div> 
     </aside>
+
+    <main>
+        <div class="row">
+            <div class="col-md">
+                <div class="container dashboard">
+                    <!-- Header -->
+                    <div class="row header-menu">
+                        <div class="col-2 my-2">
+                            <h5 class="my-4">Vendor Profile</h4>
+                        </div>
+                        <div class="ml-auto my-2">
+                            <a href="">
+                                <i class="far fa-bell px-1 m-3 notification"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col" id="settingsPage">
+                            <ul class="nav nav-pills" id="settingsTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
+                                </li>
+            
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-account-tab" data-toggle="pill" href="#pills-account" role="tab" aria-controls="account" aria-selected="false">Account Info</a>
+                                </li>
+                            </ul>
+            
+                            <div class="tab-content my-4" id="pillsTabcontent">
+                                <!-- Profile Tab -->
+                                <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                    <section>
+                                        <div class="inner mx-2">
+                                            <h5 class="py-3 font-16"><b>Edit Profile</b></h5>
+                                            <div class="row my-3">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="firstname">Name</label>
+                                                        <input type="text" class="form-control modified" id="username"  placeholder="Enter name" value="">
+                                                       
+                                                    </div>
+                                                </div>
+                                            </div>
+            
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="phone number">Email Address</label>
+                                                        <input type="text"  class="form-control" placeholder="Enter email address"/>
+                                                    </div>
+                                                </div>   
+                                            </div>
+            
+                                            <button type="submit" class="btn btn-primary my-5" class=".colored-toast.swal2-icon-success" id="updateProfile" style="background-color:#fad28f; border:none">Save Changes</button>
+                                        </div>
+                                    </section>
+                                    <br>
+            
+                                    <!-- Reset Password -->
+                                    <section class="mb-5">
+                                        <div class="inner mx-2">
+                                            <h5 class="py-3"><b>Reset Password</b></h5>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="oldPassword">Old Password</label>
+                                                        <input type="text" class="form-control" id="oldPassword" name="oldPassword"  placeholder="Enter Old Password" value="">   
+                                                    </div>
+                                                </div>
+                                            </div>
+            
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="newPassword">New Password</label>
+                                                        <input type="text" class="form-control" id="newPassword" name="newPassword"  placeholder="Enter New Password" value="">   
+                                                    </div>
+                                                </div>
+                                            </div>
+            
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="confirmPassword">Confirm New Password</label>
+                                                        <input type="text" class="form-control" id="confirmPassword" name="confirmPassword"  placeholder="Confirm New Password" value="">   
+                                                    </div>
+                                                </div>
+                                            </div>
+            
+                                            <button type="submit" class="btn btn-success my-5" class=".colored-toast.swal2-icon-success" id="resetPassword" onclick="resetPwd()" style="border:none">Reset Password</button>
+                                        </div>
+                                    </section>
+                                </div>
+
+                                <!-- Account Tab -->
+                                <div class="tab-pane fade" id="pills-account" role="tabpanel" aria-labelledby="account-tab">
+                                    <section>
+                                        <div class="inner mx-2">
+                                            <h5 class="py-3"><b>Bank Account</b></h5>
+                                            
+                                            <div class="row my-4">
+                                                <div class="col-12 my-2">
+                                                    <p class="text-left">Add/update your Bank account details for withdrawal purposes</p>
+                                                    
+                                                    <!-- Modal Query -->
+                                                    <button type="button" class="btn btn-success btn-shadow"  
+                                                    data-toggle="modal" data-target="#addAccount">
+                                                        <span class="mx-2">
+                                                        <img src="./assets/icons/Add.svg" class="img-plus" alt="">
+                                                        </span>Add Bank Account 
+                                                    </button>
+                                                    
+        
+                                                    <!-- Add Account Modal -->
+                                                    <form action="javascript:void(0)" class="form" id="search" onsubmit="createAccount()">
+                                                        <div class="modal fade" id="addAccount" tabindex="-1" role="dialog" data-backdrop="false" aria-hidden="true">
+                                                            <div class="modal-dialog"  role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title">Add Account</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <div class="col">
+                                                                                <h6 style="color:#000" class="font-10">Note: Ensure bank details are written correctly </h6>
+                                                                                <div class="form-group">
+                                                                                    <label for="accountNumber">Account Number</label>
+                                                                                    <input type="text" inputmode="numeric" class="form-control" id="accountNum" name="accountNum"  placeholder="Enter Account Number" value="">   
+                                                                                    <small>Error Message</small>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                      
+                                                                        <div class="row">
+                                                                            <div class="col mb-3">
+                                                                                <div class="form-group">
+                                                                                    <label for="phone number">Bank Name</label>
+                                                                                    <select class="form-control" id="bankName">
+                                                                                        <option selected disabled>Select Bank</option>
+                                                                                        <option value="044">Access Bank</option>
+                                                                                        <option value="063"> Access (Diamond) Bank</option>
+                                                                                        <option value="citibank">Citibank Nigeria Limited</option>
+                                                                                        <option value="050">Ecobank</option>
+                                                                                        <option value="070">Fidelity Bank</option>
+                                                                                        <option value="011">First Bank</option>
+                                                                                        <option value="214">First City Monument Bank</option>
+                                                                                        <option value="058">Guaranty Trust Bank </option>
+                                                                                        <option value="030">Heritage Bank</option>
+                                                                                        <option value="301">Jaiz Bank</option>
+                                                                                        <option value="082">Keystone Bank</option>
+                                                                                        <option value="kuda">Kuda Bank</option>
+                                                                                        <option value="polaris">Polaris Bank</option>
+                                                                                        <option value="providus">Providus Bank</option>
+                                                                                        <option value="stanbic">Stanbic IBTC Bank</option>
+                                                                                        <option value="standard">Standard Chartered Bank</option>
+                                                                                        <option value="232">Sterling Bank</option>
+                                                                                        <option value="076">Skye Bank</option>
+                                                                                        <option value="032">Union Bank</option>
+                                                                                        <option value="033">United Bank for Africa</option>
+                                                                                        <option value="215">Unity Bank</option>
+                                                                                        <option value="035">Wema Bank</option>
+                                                                                        <option value="057">Zenith Bank</option>
+                                                                                    </select>    
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+        
+                                                                        <div class="row">
+                                                                            <div class="col">
+                                                                                <div class="form-group">
+                                                                                    <label for="first">Account Name</label>
+                                                                                    <input type="text" class="form-control" id="accountName" name="accountName" placeholder="Enter Account Name" value="">   
+                                                                                    <small>Error Message</small>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+        
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                        
+                                                                        <button type="submit" class="btn btn-primary" id="button">
+                                                                           Add Account
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    
+                                                    <!-- Closing Add Account Modal  -->
+        
+                                                </div>
+                                            </div>
+        
+                                            <!-- <div class="bank-details my-5 mb-3 d-flex justify-content align-items-left">
+                                                <div class="row bank-image">
+                                                    <div class="col-3 col-sm-3">
+                                                        <img src="./assets/icons/Bank.svg" alt="bank_img" class="img-bank mx-3">
+                                                    </div>
+        
+                                                    <div class="col-9 col-sm-9 bank-text">
+                                                        <small>0236237700 - <span> Guaranty Trust Bank </span></small>
+                                                        <br>
+                                                        <small>Olutoke Damola</small>
+                                                    </div>
+                                                </div>
+                                            </div> -->    
+                                        </div>
+        
+                                        <div class="inner">
+                                            <!-- Container for saved accounts -->
+                                            <div class="table-wrapper">
+                                                <table class="table">
+                                                    <thead></thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </section>
+        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </main>
     <script src="../tab-bar.js"></script> 
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/jquery.slim.js"></script>
