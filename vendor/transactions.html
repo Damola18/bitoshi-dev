@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
 
-    <title>Vendor Dashboard | Bitoshi</title>
+    <title>Confirm Transactions| Bitoshi</title>
     <style>
         .fas .fa-edit{
             color:red;
@@ -49,9 +49,6 @@
                 width:30%;
                 position: relative;
                 right:10px;
-            }
-            aside{
-                visibility:visible;
             }
 
         }
@@ -118,20 +115,15 @@
         </div>
 
         <div class="container d-flex justify-content-center align-items-center">
-            <div class="row">
-                <a href="./transactions.html">
-                    <button class="text-dark back">Confirm Transactions <i class="fas fa-chevron-right ml-4"></i></button>
-                </a>
-            </div>
-
-            <div class="row">
-                <div class="recent-transactions">
-                    
+            <div class="row my-5">
+                    <div class="text-center">
+                        <h4 class=" bg-light weight-800">Awaiting Transactions</h4>
+                    </div>
                 </div>
             </div>
         </div>
-        
     </main>
+
     <script src="../tab-bar.js"></script> 
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/jquery.slim.js"></script>
@@ -173,10 +165,7 @@
                     }
             }
             }); 
-
-            
-
-            });
+        });
     </script>
 </body>
 </html>
