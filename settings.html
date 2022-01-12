@@ -20,8 +20,8 @@
     
 
     <!-- FONT AWESOME CDN Links -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js"> -->
     <title>Settings | Bitoshi</title>
     <style>
         /* #datepicker{
@@ -223,18 +223,20 @@
                         
                         <!-- Closing Profile Tab -->
 
+
+
+
                         <!-- Account Tab -->
                         <div class="tab-pane fade" id="pills-account" role="tabpanel" aria-labelledby="account-tab">
                             <section>
                                 <div class="inner mx-2">
-                                    <h5 class="py-3"><b>Bank Account</b></h5>
                                     
                                     <div class="row my-4">
                                         <div class="col-12 my-2">
                                             <p class="text-left">Add/update your Bank account details for withdrawal purposes</p>
                                             
                                             <!-- Modal Query -->
-                                            <button type="button" class="btn btn-success btn-shadow"  
+                                            <button type="button" class="btn btn-success btn-shadow" id="submitAcc" 
                                             data-toggle="modal" data-target="#addAccount">
                                                 <span class="mx-2">
                                                 <img src="./assets/icons/Add.svg" class="img-plus" alt="">
@@ -243,7 +245,8 @@
                                             
 
                                             <!-- Add Account Modal -->
-                                            <form action="javascript:void(0)" class="form" id="search" onsubmit="createAccount()">
+                                            <!-- <form action="javascript:void(0)" class="form" id="search" onsubmit="createAccount()"> -->
+                                            <form action="javascript:void(0)" class="form" id="search"></form>
                                                 <div class="modal fade" id="addAccount" tabindex="-1" role="dialog" data-backdrop="false" aria-hidden="true">
                                                     <div class="modal-dialog"  role="document">
                                                         <div class="modal-content">
@@ -313,15 +316,14 @@
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                                                 
-                                                                <button type="submit" class="btn btn-primary" id="button">
-                                                                   Add Account
-                                                                </button>
+                                                                <input type ="submit" class="btn btn-custom" id="btn" value="submit">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </form>
-                                            
+
+                                           
                                             <!-- Closing Add Account Modal  -->
 
                                         </div>
@@ -353,8 +355,26 @@
                                 </div>
                             </section>
 
+                            <section>
+                                <div class="inner mx-2">
+                                    <!-- Container for saved accounts -->
+                                    <h5 class="py-3"><b>Bank Account</b></h5>
+                                    <!-- <ul id="contacts">
+                                        <li class="item" id='list-item'>
+                                            <p>Bank Name :</p>
+                                            <p>Account Name</p>
+                                            <p>ACCOUNT NUMBER</p>
+                                        </li>
+                                    </ul> -->
+                                </div>
+                            </section>
                         </div>
                         <!-- Closing Account Tab -->
+
+
+
+
+
 
                         <!-- Security Tab -->
                         <div class="tab-pane fade" id="pills-security" role="tabpanel" aria-labelledby="security-tab">
